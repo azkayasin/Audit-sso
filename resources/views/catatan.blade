@@ -1,0 +1,30 @@
+<div class="box-header">
+                <h3 class="box-title">Pilih Jenis KDA</h3>
+              </div>
+              <select id="pilihkda">
+                <!-- <option value="" disabled selected>Select your option</option> -->
+                <option value="1">kda</option>
+                <option value="2">kda Temuan</option>
+              </select>
+
+
+
+               <script>
+  // var e = document.getElementById("pilihkda");
+  // var pilihan = e.options[e.selectedIndex].value;
+  // var pilihan = $( "#pilihkda" ).val();
+  // console.log("hehe");
+  // console.log(pilihan);
+  function displayVals() {
+    var pilihan = $( "#pilihkda" ).val();
+    console.log(pilihan);
+    // var link = "{{ url('pilihkda/" +pilihan;
+    // var link2 = link +"') }"+"}";
+    var link = "pilihkda/"+pilihan;
+    console.log(link);
+    // console.log(link2);
+    //$('#pilihan').attr("href",link)
+}
+$( "select" ).change( displayVals );
+displayVals();
+</script>
