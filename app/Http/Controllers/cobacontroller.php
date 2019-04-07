@@ -107,7 +107,7 @@ class cobacontroller extends Controller
 		$currentMonth = date('m');
 		$data = kda::select('id_kda')
 		->where('unit',2)
-		->whereRaw('MONTH(tanggal) != ?',[$currentMonth])
+		->whereRaw('MONTH(bulan_audit) != ?',[$currentMonth])
 		->get();
 		//print($data);
 
@@ -123,16 +123,16 @@ class cobacontroller extends Controller
 		$kda = kda::find($id);
 		return response()->json($kda);
 	}
-	public function updatekda(Request $request)
-	{
+	// public function updatekda(Request $request)
+	// {
 
-		$data = $request->all();
-		$kda = kda::find($request->idkda);
-		//return ($data);
-		$kda->update($data, ['except'=>'_token']);
-		return redirect('/kda');
+	// 	$data = $request->all();
+	// 	$kda = kda::find($request->idkda);
+	// 	//return ($data);
+	// 	$kda->update($data, ['except'=>'_token']);
+	// 	return redirect('/kda');
 
-	}
+	// }
 	public function updateketerangan(Request $request)
 	{
 
@@ -160,32 +160,32 @@ class cobacontroller extends Controller
         //return ($keterangan);
 		return response()->json($keterangan);
 	}
-	public function updatetemuan(Request $request)
-	{
+	// public function updatetemuan(Request $request)
+	// {
 
-		$data = $request->all();
-		$jumlah = count($data);
-		$data = $request->checkbox;
-		//dd ($data);
-		//dd ($jumlah);
+	// 	$data = $request->all();
+	// 	$jumlah = count($data);
+	// 	$data = $request->checkbox;
+	// 	//dd ($data);
+	// 	//dd ($jumlah);
 
-		//return($data);
-		//$temuan = temuan::find([$data]);
-		//$temuan = DB::table('temuan')->whereIn('id', $data)->get();
-		//dd ($temuan);
-		temuan::whereIn('id', $data)
-		->update([
-			'status' => '1'
-    	]);
-		// for ($i=0; $i < $jumlah; $i++) { 
-			//$temuan = temuan::find([$data]);
+	// 	//return($data);
+	// 	//$temuan = temuan::find([$data]);
+	// 	//$temuan = DB::table('temuan')->whereIn('id', $data)->get();
+	// 	//dd ($temuan);
+	// 	temuan::whereIn('id', $data)
+	// 	->update([
+	// 		'status' => '1'
+ //    	]);
+	// 	// for ($i=0; $i < $jumlah; $i++) { 
+	// 		//$temuan = temuan::find([$data]);
 
 
-			// $temuan->update($data, ['except'=>'name','keterangan']);
+	// 		// $temuan->update($data, ['except'=>'name','keterangan']);
 		
-		return redirect('/temuan');
+	// 	return redirect('/temuan');
 
-	}
+	// }
 	
 	public function coba($id)
 	{

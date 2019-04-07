@@ -1,3 +1,13 @@
+<?php
+$username;
+if (!isset($_SESSION['userinfo2']))
+        {
+            return redirect('/login2');
+        }
+else {
+  $username = $_SESSION['userinfo2'];
+}
+?>
 <header class="main-header">
   <!-- Logo -->
   <a href="index2.html" class="logo">
@@ -20,19 +30,9 @@
         <!-- Notifications: style can be found in dropdown.less -->
         <!-- Tasks: style can be found in dropdown.less -->
         <!-- User Account: style can be found in dropdown.less -->
-        @guest
-        <li class="nav-item">
-          <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-        </li>
-        @if (Route::has('register'))
-        <li class="nav-item">
-          <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-        </li>
-        @endif
-        @else
         <li class="dropdown user user-menu">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-            <span class="hidden-xs">{{ Auth::user()->name }}</span>
+            <span class="hidden-xs"><?php echo $username; ?></span>
           </a>
           <ul class="dropdown-menu">
             <!-- User image -->
@@ -40,7 +40,7 @@
               <img src="{{asset('adminlte/dist/img/user2-160x160.jpg')}}" class="img-circle" alt="User Image">
 
               <p>
-                {{ Auth::user()->name }}
+                <?php echo $username; ?>
                 <small>Member since Nov. 2012</small>
               </p>
             </li>
@@ -50,13 +50,7 @@
                 <a href="#" class="btn btn-default btn-flat">Profile</a>
               </div>
               <div class="pull-right">
-                <a class="btn btn-default btn-flat"  href="{{ route('logout') }}"
-                onclick="event.preventDefault();
-                document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                  @csrf
-                </form>
-                @endguest
+                <a class="btn btn-default btn-flat"  href="{{ route('logout2') }}">{{ __('Logout') }}</a>
               </div>
             </li>
           </ul>

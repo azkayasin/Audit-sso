@@ -1,47 +1,26 @@
-<!DOCTYPE html>
-<html>
-<head>
-  @include('admin.template.head')
-</head>
-<body class="hold-transition skin-blue sidebar-mini">
-  <div class="wrapper">
-    @include('admin.template.header')
-
-    <!-- Left side column. contains the logo and sidebar -->
-   {{--  @include('admin.template.sidebar-left') --}}
-
-    <!-- Content Wrapper. Contains page content -->
-    <div class="content-wrapper">
-      <!-- Content Header (Page header) -->
-      <section class="content-header">
-        <h1>
-          Dashboard
-          <small>Control panel</small>
-        </h1>
-        <ol class="breadcrumb">
-          <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-          <li class="active">Dashboard</li>
-        </ol>
-      </section>
-
-      <!-- Main content -->
-     <section class="content">
-      <div class="row">
-        <div class="col-xs-12">
-          
-          <div class="box">
-            <div class="box-header">
-              <h3 class="box-title">Data Table With Full Features</h3>
-            </div>
-            <!-- /.box-header -->
+@extends('admin.template.template')
+@section('judul')
+  Laporan KDA
+@endsection
+@section('dimana')
+  <li>Laporan KDA</li>
+  <li class="active">Laporan KDA</li>
+@endsection
+@section('content')
+<div class="row">
+  <div class="col-xs-12">
+    <div class="box">
+      <div class="box-header">
+          <h3 class="box-title">Laporan KDA</h3>
+        </div>
+          <div class="box-body">
             <?php
             $awal = 2019;
             $no = 1;
             $i =1;
             $konstanta = 1;
             ?>
-            <div class="box-body">
-              @if(Session::has('message'))
+            @if(Session::has('message'))
               <div class="alert alert-danger alert-block">
                 <button type="button" class="close" data-dismiss="alert">×</button> 
                       <strong>{{ Session::get('message') }}</strong>
@@ -85,31 +64,13 @@
                 @endwhile
                 </tfoot>
               </table>
-            </div>
-            <!-- /.box-body -->
           </div>
-          <!-- /.box -->
-        </div>
-        <!-- /.col -->
-      </div>
-      <!-- /.row -->
-    </section>
-    <!-- /.content -->
+    </div>
   </div>
-        <!-- /.content-wrapper -->
-        @include('admin.template.footer')
+</div>
+@endsection
 
-        <!-- Control Sidebar -->
-        @include('admin.template.sidebar-right')
-        <!-- /.control-sidebar -->
-  <!-- Add the sidebar's background. This div must be placed
-   immediately after the control sidebar -->
-   <div class="control-sidebar-bg"></div>
- </div>
- <!-- ./wrapper -->
-
- <!-- jQuery 3 -->
-@include('admin.template.setting')
+@section('addjs')
 <script>
   $(function () {
     $('#example1').DataTable()
@@ -123,5 +84,4 @@
     })
   })
 </script>
-</body>
-</html>
+@endsection

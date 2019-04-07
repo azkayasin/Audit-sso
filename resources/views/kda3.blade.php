@@ -11,7 +11,7 @@
     @include('admin.template.header')
 
     <!-- Left side column. contains the logo and sidebar -->
-    {{-- @include('admin.template.sidebar-left') --}}
+    @include('admin.template.sidebar-left')
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">

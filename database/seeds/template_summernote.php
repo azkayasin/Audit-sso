@@ -14,90 +14,62 @@ class template_summernote extends Seeder
     {
         $template = new Summernote;
         $template->tipe = 'kda tanpa temuan';
-        $template->content = '<style type="text/css">
-.tg  {border-collapse:collapse;border-spacing:0;margin:0px auto;}
-.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
-.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
-.tg .tg-puex{font-size:12px;font-family:"Times New Roman", Times, serif !important;;border-color:inherit;text-align:center}
-.tg .tg-lj5e{font-size:12px;font-family:"Times New Roman", Times, serif !important;;border-color:inherit;text-align:center;vertical-align:top}
-.tg .tg-vlyc{font-size:12px;font-family:"Times New Roman", Times, serif !important;;border-color:inherit;text-align:left;vertical-align:top}
-@media screen and (max-width: 767px) {.tg {width: auto !important;}.tg col {width: auto !important;}.tg-wrap {overflow-x: auto;-webkit-overflow-scrolling: touch;margin: auto 0px;}}</style>
-<p style="text-align: center; "><span style="font-family: " times="" new="" roman";"=""><b><span style="font-size: 12px; font-family: " times="" new="" roman";"="">KERTAS DATA AUDIT</span></b></span></p><p style="text-align: left; line-height: 1;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-family: " times="" new="" roman";"=""><span style="font-weight: bold; font-size: 12px; font-family: " times="" new="" roman";"="">Unit Kerja</span><span style="font-family: " times="" new="" roman";"="">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span></span><span style="font-family: " times="" new="" roman";"=""><b><span style="font-size: 12px; font-family: " times="" new="" roman";"="">:&nbsp;</span></b></span><span style="font-family: " times="" new="" roman";"=""><b><span style="font-size: 12px; font-family: " times="" new="" roman";"="">unit$</span></b></span></p><p style="text-align: left; line-height: 1;"><span style="font-family: " times="" new="" roman";"="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-family: " times="" new="" roman";"=""><b><span style="font-size: 12px; font-family: " times="" new="" roman";"="">Sasaran</span></b></span><span style="font-family: " times="" new="" roman";"="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-family: " times="" new="" roman";"=""><b><span style="font-size: 12px; font-family: " times="" new="" roman";"="">: Pengelolaan Keuangan</span></b></span></p><p style="text-align: left; line-height: 1;"><span style="font-family: " times="" new="" roman";"="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-family: " times="" new="" roman";"=""><b><span style="font-size: 12px; font-family: " times="" new="" roman";"="">Masa Audit&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;: masaaudit$</span></b></span></p><p style="text-align: left; line-height: 1;"><span style="font-family: " times="" new="" roman";"="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-family: " times="" new="" roman";"=""><b><span style="font-size: 12px; font-family: " times="" new="" roman";"="">Bulan Audit&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; : bulanaudit$</span></b></span></p><p style="text-align: center; line-height: 1;"></p><div style="text-align: left; line-height: 1;"><span style="font-family: " times="" new="" roman";"="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><b style="font-family: " times="" new="" roman";"=""><span style="font-size: 12px; font-family: " times="" new="" roman";"="">Auditor&nbsp; &nbsp; &nbsp; &nbsp;</span></b><span style="font-family: " times="" new="" roman";"="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><b style="font-family: " times="" new="" roman";"=""><span style="font-size: 12px; font-family: " times="" new="" roman";"="">: auditor$</span></b></div><div style="text-align: left; line-height: 1;"><b style="font-family: " times="" new="" roman";"=""><span style="font-size: 12px; font-family: " times="" new="" roman";"=""><br></span></b></div><div style="text-align: left; line-height: 1;"><b style="font-family: " times="" new="" roman";"=""><span style="font-size: 12px; font-family: " times="" new="" roman";"=""><br></span></b></div><div style="text-align: left; line-height: 1;"><b style="font-family: " times="" new="" roman";"=""><span style="font-size: 12px; font-family: " times="" new="" roman";"="">Kode Temuan 1.04</span></b><span style="font-family: " times="" new="" roman";"="">&nbsp; &nbsp; : Ketidakpatuhan terhadap Peraturan : -</span></div><div style="text-align: left; line-height: 1;"><b><span style="font-family: " times="" new="" roman";"="">Deskripsi Masalah</span></b><span style="font-family: " times="" new="" roman";"="">&nbsp; &nbsp; : -</span></div><div style="text-align: left; line-height: 1;"><span style="font-family: " times="" new="" roman";"=""><br></span></div><div style="text-align: left; line-height: 1;"><font face="Times New Roman"><b>Uraian</b></font></div><div style="text-align: left; line-height: 1;"><font face="Times New Roman"><b>a. Kondisi:</b></font></div><ul><li style="text-align: justify; line-height: 1;">&nbsp; &nbsp; Hasil audit dokumen SPJ diketahui bahwa pengelolaan administrasi keuangan bulan bulan$ tahun tahun$ yang dilaksanakan BPP di Unit Kerja : unit$ sudah tertib.</li></ul><p style="text-align: left; line-height: 1;">&nbsp; &nbsp; &nbsp; &nbsp; <b>1. Kelengkapan berkas SPJ</b></p><p style="text-align: left; line-height: 1;"><b><br></b></p><p></p><div class="tg-wrap"><table class="tg">
-  <tbody><tr>
-    <th class="tg-puex" rowspan="2">No</th>
-    <th class="tg-puex" rowspan="2"><span style="font-family: " times="" new="" roman";"="">Kelengkapan</span></th>
-    <th class="tg-lj5e" colspan="3">Keterangan</th>
-  </tr>
-  <tr>
-    <td class="tg-lj5e">Ada / Tidak ada</td>
-    <td class="tg-lj5e">Jumlah</td>
-    <td class="tg-lj5e">Nominal</td>
-  </tr>
-  <tr>
-    <td class="tg-vlyc">1</td>
-    <td class="tg-vlyc">Rekap Per Mak</td>
-    <td class="tg-vlyc">item1$</td>
-    <td class="tg-vlyc">item1_jum$</td>
-    <td class="tg-vlyc">item1_nom$</td>
-  </tr>
-  <tr>
-    <td class="tg-vlyc">2</td>
-    <td class="tg-vlyc">Rekap SPJ (urut)</td>
-    <td class="tg-vlyc">item2$</td>
-    <td class="tg-vlyc">item2_jum$</td>
-    <td class="tg-vlyc">item2_nom$</td>
-  </tr>
-  <tr>
-    <td class="tg-vlyc">3</td>
-    <td class="tg-vlyc">Kwitansi di Rekap SPJ</td>
-    <td class="tg-vlyc">item3$</td>
-    <td class="tg-vlyc">item3_jum$</td>
-    <td class="tg-vlyc">item3_nom$</td>
-  </tr>
-  <tr>
-    <td class="tg-vlyc">4</td>
-    <td class="tg-vlyc">Fisik kwitansi yang ada</td>
-    <td class="tg-vlyc">item4$</td>
-    <td class="tg-vlyc">item4_jum$</td>
-    <td class="tg-vlyc">item4_nom$</td>
-  </tr>
-  <tr>
-    <td class="tg-vlyc">5</td>
-    <td class="tg-vlyc">Kwitansi yang ada temuan</td>
-    <td class="tg-vlyc">item5$</td>
-    <td class="tg-vlyc">item5_jum$</td>
-    <td class="tg-vlyc">item5_nom$</td>
-  </tr>
-  <tr>
-    <td class="tg-vlyc">6</td>
-    <td class="tg-vlyc">BA Serah Terima UMK</td>
-    <td class="tg-vlyc">item6$</td>
-    <td class="tg-vlyc">item6_jum$</td>
-    <td class="tg-vlyc">item6_nom$</td>
-  </tr>
-  <tr>
-    <td class="tg-vlyc">7</td>
-    <td class="tg-vlyc">BA Rekonsiliasi</td>
-    <td class="tg-vlyc">item7$</td>
-    <td class="tg-vlyc">item7_jum$</td>
-    <td class="tg-vlyc">item7_nom$</td>
-  </tr>
-  <tr>
-    <td class="tg-vlyc">8</td>
-    <td class="tg-vlyc">Transaksi Jurnal</td>
-    <td class="tg-vlyc">item8$</td>
-    <td class="tg-vlyc">item8_jum$</td>
-    <td class="tg-vlyc">item8_nom$</td>
-  </tr>
-  <tr>
-    <td class="tg-vlyc">9</td>
-    <td class="tg-vlyc">Bukti Setor Saldo</td>
-    <td class="tg-vlyc">item9$</td>
-    <td class="tg-vlyc">item9_jum$</td>
-    <td class="tg-vlyc">item9_nom$</td>
-  </tr>
-</tbody></table></div><div class="tg-wrap"><br><table class="tg"><tbody></tbody></table></div><div class="tg-wrap">&nbsp; &nbsp; &nbsp; &nbsp; <b>2. Ketidakpatuhan terhadap aturan yang berlaku</b></div><div class="tg-wrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div><div class="tg-wrap">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; temuan$</div><div class="tg-wrap"><br></div><p><b>b. Kriteria</b></p><ol><li style="text-align: justify; ">&nbsp;Peraturan Pemerintah RI Nomor 45 Tahun 2013 tanggal 7 juni 2013 tentang Tata Cara Pelaksanaan Anggaran dan Belanja Negara, Pasal 65 ayat (1): "<b>Penyelesaian tagihan kepada negara atas beban anggaran Belanja Negara yang tertuang dalam APBN dilaksanakan berdasarkan hak dan bukti yang sah untuk memperoleh bayaran".</b></li><li style="text-align: justify;">Peraturan Rektor Institut Teknologi Sepuluh Nopember Nomor 7 Tahun 2018 tentang <b>Perubahan atas Peraturan Rektor Nomor 6 tahun 2017 tentang Pedoman Pengelolaan Keuangan Institut Teknologi Sepuluh Nopember.</b></li><li style="text-align: justify;">Peraturan Rektor Institut Teknologi Sepuluh Nopember Nomor 6 tahun 2018 tentang <b>Standar Biaya Institut Teknologi Sepuluh Nopember Tahun Anggaran 2018.</b></li></ol><p style="text-align: justify; "><b>c. Kesimpulan</b></p><p style="text-align: justify;">&nbsp; &nbsp; Pengelolaan administrasi di Unit Kerja : unit$ sudah sesuai dengan ketentuan yang berlaku</p><p><b>d. Rekomendasi</b></p><p style="text-align: justify; ">&nbsp; &nbsp; -<br></p><p style="text-align: justify; "><b>e. Saran</b></p><p style="text-align: justify;">&nbsp; &nbsp; Untuk dipertahankan agar pengelolaan keuangan tetap tertib.<br></p><p><b><br></b></p><p><b><br></b></p><p>Surabaya, tanggalttd$&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Menyetujui</p><p>Ka Unit Audit internal Bidang Keuangan,&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Auditan,</p><p><br></p><p><br></p><p><br></p><p>Ir. Tony Bambang M.,PGDip&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;.......................</p>
-';
+        $template->content = '<style>
+h1 { font-family: TimesNewRoman, "Times New Roman", Times, Baskerville, Georgia, serif; font-size: 12px; font-style: normal; font-variant: normal; font-weight: 700; line-height: 12px; } h3 { font-family: TimesNewRoman, "Times New Roman", Times, Baskerville, Georgia, serif; font-size: 14px; font-style: normal; font-variant: normal; font-weight: 700; line-height: 15.4px; } p { font-family: TimesNewRoman, "Times New Roman", Times, Baskerville, Georgia, serif; font-size: 12px; font-style: normal; font-variant: normal; font-weight: 400; line-height: 14px; } blockquote { font-family: TimesNewRoman, "Times New Roman", Times, Baskerville, Georgia, serif; font-size: 21px; font-style: normal; font-variant: normal; font-weight: 400; line-height: 30px; } span { font-family: TimesNewRoman, "Times New Roman", Times, Baskerville, Georgia, serif; font-size: 12px; font-style: normal; font-variant: normal; font-weight: 400; line-height: 15.5714px; } div { font-family: TimesNewRoman, "Times New Roman", Times, Baskerville, Georgia, serif; font-size: 14px; font-style: normal; font-variant: normal; font-weight: 400; line-height: 17.5714px; } li { font-family: TimesNewRoman, "Times New Roman", Times, Baskerville, Georgia, serif; font-size: 12px; font-style: normal; font-variant: normal; font-weight: 400; line-height: 15.5714px; }
+</style>
+<div id="kda1" class="box"><!-- /.box-header -->
+<div class="box-body">
+<div class="form-group">
+<p style="text-align: center;"><strong><span style="font-size: 12px;">KERTAS DATA AUDIT</span></strong></p>
+<p style="text-align: left; line-height: 0.5;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><span style="font-weight: bold; font-size: 12px;">Unit Kerja&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: unit$</span></strong></p>
+<p style="text-align: left; line-height: 0.5;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><span style="font-weight: bold; font-size: 12px;">Sasaran &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: Pengelolaan Keuangan</span></strong></p>
+<p style="text-align: left; line-height: 0.5;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><span style="font-weight: bold; font-size: 12px;">Masa Audit&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: masaaudit$</span></strong></p>
+<p style="text-align: left; line-height: 0.5;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><span style="font-weight: bold; font-size: 12px;">Bulan Audit&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: bulanaudit$</span></strong></p>
+<p style="text-align: left; line-height: 0.5;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><span style="font-weight: bold; font-size: 12px;">Auditor &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: auditor$</span></strong></p>
+<div style="text-align: left;"><strong><span style="font-size: 12px;">&nbsp;</span></strong></div>
+<div style="text-align: left;"><strong><span style="font-size: 12px;">&nbsp;</span></strong></div>
+<div style="text-align: left;"><strong>Kode Temuan 1.04</strong>&nbsp; &nbsp; : Ketidakpatuhan terhadap Peraturan : -</div>
+<div style="text-align: left;"><strong>Deskripsi Masalah</strong>&nbsp; &nbsp; : -</div>
+<div style="text-align: left;">&nbsp;</div>
+<div style="text-align: left;"><strong>Uraian</strong></div>
+<div style="text-align: left;"><strong>a. Kondisi:</strong></div>
+<ul>
+<li style="text-align: justify; line-height: 1;">&nbsp; &nbsp; <span style="font-family: " times="" new="" roman";"="">Hasil audit dokumen SPJ diketahui bahwa pengelolaan administrasi keuangan bulan bulan$ tahun tahun$ yang dilaksanakan BPP di Unit Kerja : unit$ sudah tertib.</span></li>
+</ul>
+<p style="text-align: left; line-height: 1;">&nbsp; &nbsp; &nbsp; &nbsp; <strong>1. Kelengkapan berkas SPJ</strong></p>
+<p style="text-align: left; line-height: 1;"><strong>&nbsp;</strong></p>
+<p>kdaketerangan2$</p>
+<p>&nbsp;</p>
+<div class="tg-wrap">&nbsp;</div>
+<div class="tg-wrap">&nbsp; &nbsp; &nbsp; &nbsp; <strong>2. Ketidakpatuhan terhadap aturan yang berlaku</strong></div>
+<div class="tg-wrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+<div class="tg-wrap">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+<div>temuan$</div>
+
+<div class="tg-wrap">&nbsp;</div>
+<p><strong>b. Kriteria</strong></p>
+<ol>
+<li style="text-align: justify;">&nbsp;Peraturan Pemerintah RI Nomor 45 Tahun 2013 tanggal 7 juni 2013 tentang Tata Cara Pelaksanaan Anggaran dan Belanja Negara, Pasal 65 ayat (1): "<strong>Penyelesaian tagihan kepada negara atas beban anggaran Belanja Negara yang tertuang dalam APBN dilaksanakan berdasarkan hak dan bukti yang sah untuk memperoleh bayaran".</strong></li>
+<li style="text-align: justify;">Peraturan Rektor Institut Teknologi Sepuluh Nopember Nomor 7 Tahun 2018 tentang <strong>Perubahan atas Peraturan Rektor Nomor 6 tahun 2017 tentang Pedoman Pengelolaan Keuangan Institut Teknologi Sepuluh Nopember.</strong></li>
+<li style="text-align: justify;">Peraturan Rektor Institut Teknologi Sepuluh Nopember Nomor 6 tahun 2018 tentang <strong>Standar Biaya Institut Teknologi Sepuluh Nopember Tahun Anggaran 2018.</strong></li>
+</ol>
+<p style="text-align: justify;"><strong>c. Kesimpulan</strong></p>
+<p style="text-align: justify;">&nbsp; &nbsp; Pengelolaan administrasi di Unit Kerja : unit$ sudah sesuai dengan ketentuan yang berlaku</p>
+<p><strong>d. Rekomendasi</strong></p>
+<p style="text-align: justify;">&nbsp; &nbsp; -</p>
+<p style="text-align: justify;"><strong>e. Saran</strong></p>
+<p style="text-align: justify;">&nbsp; &nbsp; Untuk dipertahankan agar pengelolaan keuangan tetap tertib.</p>
+<p><strong>&nbsp;</strong></p>
+<p><strong>&nbsp;</strong></p>
+<p>Surabaya, tanggalttd$ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;Menyetujui</p>
+<p>Ka Unit Audit internal Bidang Keuangan,&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Auditan,</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>Ir. Tony Bambang M.,PGDip&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; auditor$ </p>
+</div>
+</div>
+</div>';
         $template->save();
 
         $template = new Summernote;
@@ -184,8 +156,7 @@ class template_summernote extends Seeder
     <td class="tg-vlyc">item9_jum$</td>
     <td class="tg-vlyc">item9_nom$</td>
   </tr>
-</tbody></table></div><div class="tg-wrap"><br><table class="tg"><tbody></tbody></table></div><div class="tg-wrap">&nbsp; &nbsp; &nbsp; &nbsp; <b>2. Ketidakpatuhan terhadap aturan yang berlaku</b></div><div class="tg-wrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div><div class="tg-wrap">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; temuan$</div><div class="tg-wrap"><b><br></b></div><ul><li style="text-align: justify; ">&nbsp; &nbsp; Hasil audit dokumen SPJ diketahui bahwa pengelolaan administrasi keuangan tahun tahun$ yang dilaksanakan BPP di Unit Kerja : unit$ yang belum ditindaklanjuti, antara lain:</li></ul><p>&nbsp; &nbsp; &nbsp; &nbsp; temuanlama$</p><p><b>b. Kriteria</b></p><ol><li style="text-align: justify; ">&nbsp;Peraturan Pemerintah RI Nomor 45 Tahun 2013 tanggal 7 juni 2013 tentang Tata Cara Pelaksanaan Anggaran dan Belanja Negara, Pasal 65 ayat (1): "<b>Penyelesaian tagihan kepada negara atas beban anggaran Belanja Negara yang tertuang dalam APBN dilaksanakan berdasarkan hak dan bukti yang sah untuk memperoleh bayaran".</b></li><li style="text-align: justify;">Peraturan Rektor Institut Teknologi Sepuluh Nopember Nomor 7 Tahun 2018 tentang <b>Perubahan atas Peraturan Rektor Nomor 6 tahun 2017 tentang Pedoman Pengelolaan Keuangan Institut Teknologi Sepuluh Nopember.</b></li><li style="text-align: justify;">Peraturan Rektor Institut Teknologi Sepuluh Nopember Nomor 6 tahun 2018 tentang <b>Standar Biaya Institut Teknologi Sepuluh Nopember Tahun Anggaran 2018.</b></li></ol><p style="text-align: justify; "><b>c. Kesimpulan</b></p><p style="text-align: justify;">&nbsp; &nbsp; Pengelolaan administrasi di Unit Kerja : unit$ belum tertib karena kurangnya pengendalian internal pimpinan Unit Kerja, kekurangcermatan dan belum optimal BPP dalam melaksanakan tanggungjawabnya dan lemahnya pengawasan PPK terkait, sehingga menyebebkan tertib administrasi keuangan tidak tercapai.</p><p><b>d. Rekomendasi</b></p><p style="text-align: justify; ">&nbsp; &nbsp; Pimpinan Unit Kerja mengistruksikan BPP terkait untuk segera mlengkapi bukti pertanggungjawaban pembayaran/pembelian barang/jasa sesuai peraturan yang berlaku.</p><p style="text-align: justify; "><b>e. Tanggapan</b></p><p style="text-align: justify;">&nbsp; &nbsp; (Bisa disampaikan dalam kertas terpisah dan ditandatangani oleh pimpinan Unit Kerja Terkait)</p><p><b><br></b></p><p><b><br></b></p><p>Surabaya, tanggalttd$&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Menyetujui</p><p>Ka Unit Audit internal Bidang Keuangan,&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Auditan,</p><p><br></p><p><br></p><p><br></p><p>Ir. Tony Bambang M.,PGDip&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;.......................</p>
-';
+</tbody></table></div><div class="tg-wrap"><br><table class="tg"><tbody></tbody></table></div><div class="tg-wrap">&nbsp; &nbsp; &nbsp; &nbsp; <b>2. Ketidakpatuhan terhadap aturan yang berlaku</b></div><div class="tg-wrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div><div class="tg-wrap">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; temuan$</div><div class="tg-wrap"><b><br></b></div><ul><li style="text-align: justify; ">&nbsp; &nbsp; Hasil audit dokumen SPJ diketahui bahwa pengelolaan administrasi keuangan tahun tahun$ yang dilaksanakan BPP di Unit Kerja : unit$ yang belum ditindaklanjuti, antara lain:</li></ul><p>&nbsp; &nbsp; &nbsp; &nbsp; temuanlama$</p><p><b>b. Kriteria</b></p><ol><li style="text-align: justify; ">&nbsp;Peraturan Pemerintah RI Nomor 45 Tahun 2013 tanggal 7 juni 2013 tentang Tata Cara Pelaksanaan Anggaran dan Belanja Negara, Pasal 65 ayat (1): "<b>Penyelesaian tagihan kepada negara atas beban anggaran Belanja Negara yang tertuang dalam APBN dilaksanakan berdasarkan hak dan bukti yang sah untuk memperoleh bayaran".</b></li><li style="text-align: justify;">Peraturan Rektor Institut Teknologi Sepuluh Nopember Nomor 7 Tahun 2018 tentang <b>Perubahan atas Peraturan Rektor Nomor 6 tahun 2017 tentang Pedoman Pengelolaan Keuangan Institut Teknologi Sepuluh Nopember.</b></li><li style="text-align: justify;">Peraturan Rektor Institut Teknologi Sepuluh Nopember Nomor 6 tahun 2018 tentang <b>Standar Biaya Institut Teknologi Sepuluh Nopember Tahun Anggaran 2018.</b></li></ol><p style="text-align: justify; "><b>c. Kesimpulan</b></p><p style="text-align: justify;">&nbsp; &nbsp; Pengelolaan administrasi di Unit Kerja : unit$ belum tertib karena kurangnya pengendalian internal pimpinan Unit Kerja, kekurangcermatan dan belum optimal BPP dalam melaksanakan tanggungjawabnya dan lemahnya pengawasan PPK terkait, sehingga menyebebkan tertib administrasi keuangan tidak tercapai.</p><p><b>d. Rekomendasi</b></p><p style="text-align: justify; ">&nbsp; &nbsp; Pimpinan Unit Kerja mengistruksikan BPP terkait untuk segera mlengkapi bukti pertanggungjawaban pembayaran/pembelian barang/jasa sesuai peraturan yang berlaku.</p><p style="text-align: justify; "><b>e. Tanggapan</b></p><p style="text-align: justify;">&nbsp; &nbsp; (Bisa disampaikan dalam kertas terpisah dan ditandatangani oleh pimpinan Unit Kerja Terkait)</p><p><b><br></b></p><p><b><br></b></p><p>Surabaya, tanggalttd$&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Menyetujui</p><p>Ka Unit Audit internal Bidang Keuangan,&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Auditan,</p><p><br></p><p><br></p><p><br></p><p>Ir. Tony Bambang M.,PGDip&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;.......................</p>';
         $template->save();
 
         $template = new Summernote;
@@ -224,8 +195,7 @@ class template_summernote extends Seeder
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <p><strong>Ir. Mutiah Salamah Chamid., M.Kes</strong>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;.................................</p>
-<p>&nbsp;</p>
-';
+<p>&nbsp;</p>';
         $template->save();
 
         $template = new Summernote;
@@ -320,7 +290,7 @@ class template_summernote extends Seeder
 
         $template = new Summernote;
         $template->tipe = 'kda dengan temuan web';
-        $template->content = '  <div class="box" id="kda2">
+        $template->content = '<div class="box" id="kda2">
     <div class="box-body">
      <div class="form-group">
       <h2 align="center">FORM KDA DENGAN TEMUAN</h2> 
@@ -343,8 +313,8 @@ class template_summernote extends Seeder
 <div style="text-align: left; line-height: 1;"><strong><span style="font-size: 12px;">Kode Temuan 1.04</span></strong>&nbsp; &nbsp; : Ketidakpatuhan terhadap Peraturan : administrasi</div>
 <div style="text-align: left; line-height: 1;"><strong>Deskripsi Masalah</strong>&nbsp; &nbsp; : Pertanggungjawaban pembayaran/ pembelian barang/jasa tidak akuntabel (bukti tidak lengkap/tidak valid)</div>
 <div style="text-align: left; line-height: 1;">&nbsp;</div>
-<div style="text-align: left; line-height: 1;"><span style="font-family: 'Times New Roman';"><strong>Uraian</strong></span></div>
-<div style="text-align: left; line-height: 1;"><span style="font-family: 'Times New Roman';"><strong>a. Kondisi:</strong></span></div>
+<div style="text-align: left; line-height: 1;"><span style="font-family: "Times New Roman";"><strong>Uraian</strong></span></div>
+<div style="text-align: left; line-height: 1;"><span style="font-family: "Times New Roman";"><strong>a. Kondisi:</strong></span></div>
 <ul>
 <li style="text-align: justify; line-height: 1;">&nbsp; &nbsp; Hasil audit dokumen SPJ diketahui bahwa pengelolaan administrasi keuangan bulan <input class="bulan" readonly="readonly" type="text" /> tahun <input class="tahun" readonly="readonly" type="text" /> di Unit Kerja : <input class="unit" readonly="readonly" type="text" /> belum sepenuhnya tertib, antara lain:</li>
 </ul>
@@ -414,8 +384,7 @@ class template_summernote extends Seeder
     </div> 
   </div>
 </div>
-</div>
-';
+</div>';
         $template->save();
 
         $template = new Summernote;

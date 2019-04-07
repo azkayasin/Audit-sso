@@ -15,7 +15,8 @@
         "laravel/tinker": "^1.0",
         "laravelcollective/html": "^5.4.0",
 		"nesbot/carbon": "^1.33",
-		"chumper/zipper": "1.0.x"
+		"chumper/zipper": "1.0.x",
+        "jumbojett/openid-connect-php": "^0.6.0"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",

@@ -3,7 +3,9 @@
 
 namespace App\Http\Controllers;
 
-
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use App\TagList;
 use App\Temuan;
@@ -16,8 +18,29 @@ use DB;
 use PDF;
 
 
-class temuanController extends Controller
+class TemuanController extends Controller
 {
+    public function updatetemuan(Request $request)
+    {
+
+        $data = $request->all();
+        $jumlah = count($data);
+        $data = $request->checkbox;
+        temuan::whereIn('id', $data)
+        ->update([
+            'status' => '1'
+        ]);
+        
+        return redirect('/kda');
+
+    }
+
+
+
+
+
+
+
     public function buatpdf($id)
     {
         $temuan = DB::table('temuan')->where('kda_id',$id)->get();

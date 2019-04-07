@@ -14,123 +14,50 @@ use File;
 use Redirect;
 use Session;
 
-class pdfcontroller extends Controller
+class PdfController extends Controller
 {
-	// public function buatpdf($id)
-	// {
-	// 	$temuan = DB::table('temuan')->where('kda_id',$id)->get();
-	// 	$kda = DB::table('kda')->where('id_kda',$id)->leftjoin('unit','kda.unit','=','unit.id_unit')->get();
-	// 	//$kda = json_encode($kda);
-	// 	//$kda = DB::table('kda')->where('id_kda','$id') ->leftjoin('unit','kda.unit','=','unit.id_unit')->get();
-	// 	//return response()->json($kda);
-	// 	//return ($temuan);
-	// 	$pdf = PDF::loadView('pdf', ['kda' => $kda, 'temuan' => $temuan]);
-	// 	return $pdf->download('invoice.pdf');
+	public function downloadkdatriwulanfix($tahun, $sesi)
+	{
+		if ($sesi ==1) $bulan =1;
+		elseif ($sesi ==2) $bulan = 4;
+		elseif ($sesi == 3) $bulan = 7;
+		else $bulan = 10;
 
-	// }
-// 	public function buatpdf2()
-// 	{
-// 		$summernotes = DB::table('temuan')->get()->toArray();
-// 		print_r($summernotes);
-// 		echo "<br><br><br>";
-// 		$temuan = DB::table('temuan')->get();
-// 		print_r($temuan);
-		
-// // // Dump array with object-arrays
-// // 		dd($arrays);
-// 		//$kda = json_encode($kda);
-// 		//$kda = DB::table('kda')->where('id_kda','$id') ->leftjoin('unit','kda.unit','=','unit.id_unit')->get();
-// 		//return response()->json($kda);
-// 		//return ($temuan);
+		$path = "zip/";
+		$zipnama = "triwulan_{$sesi}_{$tahun}.zip";
+		$path .= $zipnama;
+		$data = kda::select('id_kda', 'jenis','bulan_audit')
+		->whereRaw("(MONTH(bulan_audit) = {$bulan} OR MONTH(bulan_audit) = {$bulan}+1 OR MONTH(bulan_audit) = {$bulan}+2 ) AND YEAR(bulan_audit) =  {$tahun}")
+		->get();
 
-// 		$arr = array(1, 2, 3, 4);
-// 		echo "<br><br><br>";
-// 		foreach($arr as $value)
-// 		{
-// 			echo $value;
-// 		}
-// 		print_r($arr);
-// 		echo "<br><br><br>";
-// 		foreach ($arr as $key => $value) {
-// 			echo "{$key} => {$value} ";
-// 		}
-// 		print_r($arr);
-// 		// $dompdf = PDF::loadView('pdf2', ['summernotes' => $summernotes]);
-// 		// $dompdf->render();
-
-// 		// return $dompdf->stream("hello.pdf");
-// 		//return $pdf->download('cobasummer.pdf');
-
-// 	}
-	public function buatpdf3(){
-		$html = '';
-		$i =1;
-		$summernotes = DB::table('summernotes')->get();
-		foreach($summernotes as $summernotes)
-		{
-			$view = view('pdf2', ['summernotes' => $summernotes]);
-			$html = $view->render();
-			$pdf = PDF::loadHTML($html);            
-			$sheet = $pdf->setPaper('a4', 'potrait');
-			$filename = "kda/".$i."coba.pdf";
-			//printf($filename);
-			$sheet->save($filename);
-			// $content = $sheet->output();
-			// file_put_contents('filename.pdf', $content);
-		    //return $sheet->download($i.'coba.pdf'); 
-			$i++;
+		foreach ($data as $id) {
+			$download = $this->filepdf($id->id_kda);
+	    	$file = $download[0];
+	    	$nama = $download[1];
+			$pdfnama = "file_kda/triwulan_{$sesi}_{$tahun}/";
+			File::isDirectory($pdfnama) or File::makeDirectory($pdfnama);
+			$pdfnama .= $nama;
+			$file->save($pdfnama);
 		}
+		$files = glob("file_kda/triwulan_{$sesi}_{$tahun}/*");
+		Zipper::make($path)->add($files)->close();
+		if(file_exists($path))
+		{
+			return response()->download($path);
 
-		//return $sheet->download($i.'coba.pdf'); 
+		}
+		else
+		{
+			Session::flash('message', 'Tidak ada data KDA'); 
+			Session::flash('alert-class', 'alert-danger');
+			return Redirect::back(); 
+		}
 	}
-	// public function buatpdf4()
-	// {
-	// 	$lang_array = array("chi","eng");
-	// 	$i = 0;
-	// 	foreach($lang_array as $lang)
-	// 	{
-	// 		$html = "<!DOCTYPE html><html><body>M</body></html>";
-	// 		$dompdf = new PDF();
-	// 		$dompdf = PDF::loadHTML($html);            
-	// 	  //$dompdf->load_html($html);
-	// 	  //$dompdf->set_paper("A4", 'portrait');
-	// 		$dompdf = PDF::render();
-	// 		$output = $dompdf->output();
-	// 		unset($dompdf);
-	// 		file_put_contents($i.".pdf", $output);
-	// 		$i++;
-	// 	}
-	// }
-	public function tgl_indo($tanggal){
-		$bulan = array (
-			1 =>   'Januari',
-			'Februari',
-			'Maret',
-			'April',
-			'Mei',
-			'Juni',
-			'Juli',
-			'Agustus',
-			'September',
-			'Oktober',
-			'November',
-			'Desember'
-		);
-		$pecahkan = explode('-', $tanggal);
-		
-		// variabel pecahkan 0 = tanggal
-		// variabel pecahkan 1 = bulan
-		// variabel pecahkan 2 = tahun
-	 
-		return $pecahkan[2] . ' ' . $bulan[ (int)$pecahkan[1] ] . ' ' . $pecahkan[0];
-	}
-	
-
 	public function filepdf($id)
     {
         $kda = DB::table('kda')->where('id_kda',$id)->leftjoin('unit','kda.unit','=','unit.id_unit')->first();
         $data = DB::table('kda_data')->where('kda_id',$id)->first();
-        $temuan = DB::table('temuan')->where('kda_id',$id)->get();
+        $temuan = DB::table('temuan')->where('kda_id',$id and 'status',0)->get();
         $kda_ket = DB::table('kda_keterangan2')->where('kda_id',$id)->get();
         $ket = DB::table('kda_keterangan')->where('kda_id',$id)->first();
         $bulan = date("m",strtotime($kda->bulan_audit));
@@ -165,7 +92,7 @@ class pdfcontroller extends Controller
 					$summernotes = DB::table('summernotes')->where('id',2) ->first();
 					$view = view('pdf2', ['summernotes' => $summernotes]);
 					$contents = $view->render();
-					//untuk mencatat temuan sebelumnya (belum kondisi yg status 1)
+					//untuk mencatat temuan sebelumnya
 					$semuakda = kda::select('id_kda')->where('unit', $kda->unit)
 					->whereRaw(" MONTH(bulan_audit) < {$bulan}  AND YEAR(bulan_audit) =  20{$tahun}")
 					->get();
@@ -175,7 +102,10 @@ class pdfcontroller extends Controller
 					->orderBy('kda.bulan_audit')->get();
 					$temuan2 = json_decode($temuan1);
 					$table = '';
-					for ($i=1; $i < 13 ; $i++) { 
+					$katapembuka = '<ul><li style="text-align: justify; ">&nbsp; &nbsp; Hasil audit dokumen SPJ diketahui bahwa pengelolaan administrasi keuangan tahun tahun$ yang dilaksanakan BPP di Unit Kerja : unit$ yang belum ditindaklanjuti, antara lain:</li></ul>';
+					if($temuan2){
+						$table .= $katapembuka;
+						for ($i=1; $i < 13 ; $i++) { 
 						$temuanawal = 0;
 						foreach ($temuan2 as $key => $value) { 
 						$month = date("m",strtotime($value->bulan_audit));
@@ -184,7 +114,7 @@ class pdfcontroller extends Controller
 								$temuanawal++;
 								if ($temuanawal == 1)
 								{
-									$table .= 'ini bulan '.$bulannama.'<br><br>';
+									$table .= 'Bulan '.$bulannama.'<br><br>';
 									$table .= '<table class="table table-bordered table-striped">
 											<thead>
 												<th>Kwitansi</th>
@@ -213,13 +143,15 @@ class pdfcontroller extends Controller
 						
 						
 						}
-						if ($temuanawal != 0) {
-							$table .='</tbody>
+							if ($temuanawal != 0) {
+								$table .='</tbody>
 									</table><br><br>';
+							}
 						}
 					}
+					
 					$contents = str_replace("temuanlama$", $table, $contents);
-					//akhir untuk mencatat temuan sebelumnya (belum kondisi yg status 1)
+					//akhir untuk mencatat temuan sebelumnya
 					
 				}
 				elseif ($kda->jenis == 3) {
@@ -334,7 +266,32 @@ class pdfcontroller extends Controller
 			return array($sheet,$pdfnama);
         	//return $sheet->download($pdfnama);
     }
-    public function downloadpdf($id)
+
+    public function tgl_indo($tanggal){
+		$bulan = array (
+			1 =>   'Januari',
+			'Februari',
+			'Maret',
+			'April',
+			'Mei',
+			'Juni',
+			'Juli',
+			'Agustus',
+			'September',
+			'Oktober',
+			'November',
+			'Desember'
+		);
+		$pecahkan = explode('-', $tanggal);
+		
+		// variabel pecahkan 0 = tanggal
+		// variabel pecahkan 1 = bulan
+		// variabel pecahkan 2 = tahun
+	 
+		return $pecahkan[2] . ' ' . $bulan[ (int)$pecahkan[1] ] . ' ' . $pecahkan[0];
+	}
+
+	public function downloadpdf($id)
     {
     	$download = $this->filepdf($id);
     	$file = $download[0];
@@ -342,6 +299,100 @@ class pdfcontroller extends Controller
     	return $file->download($nama);
 
     }
+
+
+
+
+
+	// public function buatpdf($id)
+	// {
+	// 	$temuan = DB::table('temuan')->where('kda_id',$id)->get();
+	// 	$kda = DB::table('kda')->where('id_kda',$id)->leftjoin('unit','kda.unit','=','unit.id_unit')->get();
+	// 	//$kda = json_encode($kda);
+	// 	//$kda = DB::table('kda')->where('id_kda','$id') ->leftjoin('unit','kda.unit','=','unit.id_unit')->get();
+	// 	//return response()->json($kda);
+	// 	//return ($temuan);
+	// 	$pdf = PDF::loadView('pdf', ['kda' => $kda, 'temuan' => $temuan]);
+	// 	return $pdf->download('invoice.pdf');
+
+	// }
+// 	public function buatpdf2()
+// 	{
+// 		$summernotes = DB::table('temuan')->get()->toArray();
+// 		print_r($summernotes);
+// 		echo "<br><br><br>";
+// 		$temuan = DB::table('temuan')->get();
+// 		print_r($temuan);
+		
+// // // Dump array with object-arrays
+// // 		dd($arrays);
+// 		//$kda = json_encode($kda);
+// 		//$kda = DB::table('kda')->where('id_kda','$id') ->leftjoin('unit','kda.unit','=','unit.id_unit')->get();
+// 		//return response()->json($kda);
+// 		//return ($temuan);
+
+// 		$arr = array(1, 2, 3, 4);
+// 		echo "<br><br><br>";
+// 		foreach($arr as $value)
+// 		{
+// 			echo $value;
+// 		}
+// 		print_r($arr);
+// 		echo "<br><br><br>";
+// 		foreach ($arr as $key => $value) {
+// 			echo "{$key} => {$value} ";
+// 		}
+// 		print_r($arr);
+// 		// $dompdf = PDF::loadView('pdf2', ['summernotes' => $summernotes]);
+// 		// $dompdf->render();
+
+// 		// return $dompdf->stream("hello.pdf");
+// 		//return $pdf->download('cobasummer.pdf');
+
+// 	}
+	public function buatpdf3(){
+		$html = '';
+		$i =1;
+		$summernotes = DB::table('summernotes')->get();
+		foreach($summernotes as $summernotes)
+		{
+			$view = view('pdf2', ['summernotes' => $summernotes]);
+			$html = $view->render();
+			$pdf = PDF::loadHTML($html);            
+			$sheet = $pdf->setPaper('a4', 'potrait');
+			$filename = "kda/".$i."coba.pdf";
+			//printf($filename);
+			$sheet->save($filename);
+			// $content = $sheet->output();
+			// file_put_contents('filename.pdf', $content);
+		    //return $sheet->download($i.'coba.pdf'); 
+			$i++;
+		}
+
+		//return $sheet->download($i.'coba.pdf'); 
+	}
+	// public function buatpdf4()
+	// {
+	// 	$lang_array = array("chi","eng");
+	// 	$i = 0;
+	// 	foreach($lang_array as $lang)
+	// 	{
+	// 		$html = "<!DOCTYPE html><html><body>M</body></html>";
+	// 		$dompdf = new PDF();
+	// 		$dompdf = PDF::loadHTML($html);            
+	// 	  //$dompdf->load_html($html);
+	// 	  //$dompdf->set_paper("A4", 'portrait');
+	// 		$dompdf = PDF::render();
+	// 		$output = $dompdf->output();
+	// 		unset($dompdf);
+	// 		file_put_contents($i.".pdf", $output);
+	// 		$i++;
+	// 	}
+	// }
+	
+	
+
+
 
 	public function downloadkda(){
 		$files = glob('kda/*');
@@ -507,43 +558,7 @@ class pdfcontroller extends Controller
 
 	}
 
-	public function downloadkdatriwulanfix($tahun, $sesi)
-	{
-		if ($sesi ==1) $bulan =1;
-		elseif ($sesi ==2) $bulan = 4;
-		elseif ($sesi == 3) $bulan = 7;
-		else $bulan = 10;
-
-		$path = "zip/";
-		$zipnama = "triwulan_{$sesi}_{$tahun}.zip";
-		$path .= $zipnama;
-		$data = kda::select('id_kda', 'jenis','tanggal')
-		->whereRaw("(MONTH(tanggal) = {$bulan} OR MONTH(tanggal) = {$bulan}+1 OR MONTH(tanggal) = {$bulan}+2 ) AND YEAR(tanggal) =  {$tahun}")
-		->get();
-
-		foreach ($data as $id) {
-			$download = $this->filepdf($id->id_kda);
-	    	$file = $download[0];
-	    	$nama = $download[1];
-			$pdfnama = "file_kda/triwulan_{$sesi}_{$tahun}/";
-			File::isDirectory($pdfnama) or File::makeDirectory($pdfnama);
-			$pdfnama .= $nama;
-			$file->save($pdfnama);
-		}
-		$files = glob("file_kda/triwulan_{$sesi}_{$tahun}/*");
-		Zipper::make($path)->add($files)->close();
-		if(file_exists($path))
-		{
-			return response()->download($path);
-
-		}
-		else
-		{
-			Session::flash('message', 'Tidak ada data KDA'); 
-			Session::flash('alert-class', 'alert-danger');
-			return Redirect::back(); 
-		}
-	}
+	
 
 
 }

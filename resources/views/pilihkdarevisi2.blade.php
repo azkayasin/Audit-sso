@@ -1,19 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Laravel - Dynamically Add or Remove input fields using JQuery</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />  
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
   @include('admin.template.head')
-  <meta name="csrf-token" content="{{ csrf_token() }}">
+  {{-- <meta name="csrf-token" content="{{ csrf_token() }}"> --}}
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
   <div class="wrapper">
     @include('admin.template.header')
 
     <!-- Left side column. contains the logo and sidebar -->
-    {{--  @include('admin.template.sidebar-left') --}}
+     @include('admin.template.sidebar-left')
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">

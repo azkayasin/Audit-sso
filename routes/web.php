@@ -44,17 +44,15 @@ Route::get("addmore","temuanController@addMore");
 Route::post("addmore","temuanController@addMorePost");
 
 Route::get("tambah","temuanController@tambah");
-Route::post("tambahkda1","temuanController@tambahkda1");
-Route::post("tambahkda2","temuanController@tambahkda2");
-Route::post("tambahkda3","temuanController@tambahkda3");
+// Route::post("tambahkda1","temuanController@tambahkda1");
+// Route::post("tambahkda2","temuanController@tambahkda2");
+// Route::post("tambahkda3","temuanController@tambahkda3");
 Route::post("tambahkda4","temuanController@tambahkda4");
 
 //Bisa
 Route::post('/get/child', 'admincontroller@getChild');
 Route::get('/tables', 'admincontroller@tables');
 //Route::get('pdf/{id}',  'temuanController@buatpdf');
-Route::get('/kda', 'kdacontroller@index');
-Route::get('/templatekda', 'kdacontroller@template');
 
 Route::get('/pilihkda', 'kdacontroller@pilih');
 Route::get('/pilihkda2', 'kdacontroller@pilih2');
@@ -68,20 +66,20 @@ Route::get('download',  'pdfcontroller@downloadkdatriwulan');
 //Route::get('download/tahun/{tahun}/triwulan/{i}', 'pdfcontroller@downloadkdatriwulan2')->name('downloadtriwulan');
 Route::get('laporan',  'pdfcontroller@laporan2');
 
-Route::get('/kdatriwulan', 'kdacontroller@triwulan');
-Route::get('download/triwulan/{tahun}/{sesi?}', [
-    'as' => 'downloadtriwulan',
-    'uses' => 'pdfcontroller@downloadkdatriwulanfix',
-]);
+// Route::get('/kdatriwulan', 'kdacontroller@triwulan');
+// Route::get('download/triwulan/{tahun}/{sesi?}', [
+//     'as' => 'downloadtriwulan',
+//     'uses' => 'pdfcontroller@downloadkdatriwulanfix',
+// ]);
 Route::post('/kda/temuan', 'cobacontroller@gettemuan');
-Route::post('/temuan/temuanlama', 'temuanController@gettemuanlama');
+// Route::post('/temuan/temuanlama', 'temuanController@gettemuanlama');
 
 
 Route::get('/temuan', 'cobacontroller@bulan');
-Route::get('/temuan/update', 'cobacontroller@updatetemuan');
+//Route::get('/temuan/update', 'cobacontroller@updatetemuan');
 Route::post('/kda/data', 'cobacontroller@getkda');
 
-Route::post('/kda/update', 'cobacontroller@updatekda');
+// Route::post('/kda/update', 'cobacontroller@updatekda');
 Route::post('/kda/keterangan', 'cobacontroller@getketerangan');
 Route::post('/keterangan/update', 'cobacontroller@updateketerangan');
 Route::get('/kda/coba/{id}', 'cobacontroller@coba');
@@ -93,18 +91,46 @@ Route::group(['prefix' => 'laravel-crud-search-sort-ajax-modal-form'], function 
 	Route::delete('delete/{id}', 'Crud5Controller@delete');
 });
 
-
-Route::get('/login', 'AuthController@showLogin')->name('login')->middleware('guest');
-Route::post('/login', 'AuthController@login');
+//Route::post('/login', 'AuthController@login');
 Route::get('/register', 'AuthController@showRegister')->name('register')->middleware('guest');
 Route::post('/register', 'AuthController@register');
 Route::post('/logout', 'AuthController@logout')->name('logout');
 Route::get('/hak','AuthController@hak')->name('hak');
 
-Route::group(['middleware' => 'admin'], function () {
+
+
+
+Route::get('/login', 'AuthController@showLogin')->name('login')->middleware('guest');
+Route::get('/login2', 'AuthController@login2');
+Route::get('/tujuan', 'AuthController@tujuan');
+Route::get('/logout2', 'AuthController@logout2')->name('logout2');
+
+Route::group(['middleware' => 'Admin'], function () {
 	Route::get('/admin','AuthController@home')->name('home1');
+	Route::get('/kda', 'KdaController@index');
+	Route::post('/kda/update', 'KdaController@updatekda');
+	Route::post('/temuan/temuanlama', 'KdaController@gettemuanlama');
+	Route::get('/temuan/update', 'TemuanController@updatetemuan');
+
+	Route::get('/buatkda', 'KdaController@buatkda');
+	Route::post("tambahkda1","KdaController@tambahkda1");
+	Route::post("tambahkda2","KdaController@tambahkda2");
+	Route::post("tambahkda3","KdaController@tambahkda3");
+	
+
+	Route::get('/kdatriwulan', 'KdaController@triwulan');
+	Route::get('download/triwulan/{tahun}/{sesi?}', [
+    'as' => 'downloadtriwulan',
+    'uses' => 'PdfController@downloadkdatriwulanfix',
+	]);
+
+	Route::get('/templatekda', 'KdaController@template');
+
 });
 
-Route::group(['middleware' => 'member'], function () {
+Route::group(['middleware' => 'Member'], function () {
 	Route::get('/member','AuthController@homemember')->name('home2');
+});
+Route::group(['middleware' => 'Pimpinan'], function () {
+	Route::get('/member2','AuthController@homemember')->name('home2');
 });

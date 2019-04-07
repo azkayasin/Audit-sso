@@ -1,0 +1,83 @@
+@import "../fonts/Roboto Medium/Roboto Medium.css";
+
+$white: #fff;
+$orange: #c37444;
+$blue: #0067ac;
+
+.myits-button {
+	background: $white;
+	width: 275px;
+	height: 50px;
+	box-shadow: 0 0 2px 0 rgba(0,0,0,.25);
+	border-radius: 3px;
+	cursor: pointer;
+	overflow: hidden;
+	-webkit-transition: all .25s;
+	-moz-transition: all .25s;
+	-ms-transition: all .25s;
+	-o-transition: all .25s;
+	transition: all .25s;
+	&:hover {
+		box-shadow: 0 0 10px rgba(0, 103, 172, .5);
+	}
+	.myits-logo {
+		background: $blue;
+		background-image: url('../images/its-logo.png');
+		background-repeat: no-repeat;
+		background-size: 30px 30px;
+		background-position: 50% 50%;
+		width: 50px;
+		height: 50px;
+		float: left;
+	}
+	.myits-label {
+		font-family: "robotomedium", sans-serif;
+		text-align: center;
+		color: $blue;
+		line-height: 50px;
+		width: 225px;
+		height: 50px;
+		float: left;
+	}
+}
+.myits-button-dark {
+	background: $blue;
+	width: 275px;
+	height: 50px;
+	box-shadow: 0 0 2px 0 rgba(0,0,0,.25);
+	border-radius: 3px;
+	cursor: pointer;
+	overflow: hidden;
+	-webkit-transition: all .25s;
+	-moz-transition: all .25s;
+	-ms-transition: all .25s;
+	-o-transition: all .25s;
+	transition: all .25s;
+	&:hover {
+		box-shadow: 0 0 10px rgba(0, 103, 172, .5);
+	}
+	.myits-logo {
+		background: $white;
+		background-image: url('../images/its-logo-dark.png');
+		background-repeat: no-repeat;
+		background-size: 30px 30px;
+		background-position: 50% 50%;
+		width: 50px;
+		height: 50px;
+		float: left;
+	}
+	.myits-label {
+		font-family: "robotomedium", sans-serif;
+		text-align: center;
+		color: $white;
+		line-height: 50px;
+		width: 225px;
+		height: 50px;
+		float: left;
+	}
+}
+@media
+(-webkit-min-device-pixel-ratio: 2),
+(min-resolution: 192dpi) {
+	/* Retina-specific stuff here */
+}
