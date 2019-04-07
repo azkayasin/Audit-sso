@@ -73,6 +73,7 @@ class KdaController extends Controller
                 $ket->save();  
             }
             
+            //app('App\Http\Controllers\PdfController')->downloadpdf($kda->id_kda);
             return response()->json(['success'=>'done']);
         
     }
@@ -157,19 +158,7 @@ class KdaController extends Controller
 	    return response()->json(['success'=>'done']);
         
     }
-    public function gettemuanlama(Request $request){
-        //untuk mencatat temuan sebelumnya (belum kondisi yg status 1)
-        $unit = $request->input('unit');
-        $bulan = $request->input('bulan');
-        $tahun = $request->input('tahun');
-        $semuakda = kda::select('id_kda')->where('unit', $unit)
-        ->whereRaw(" MONTH(bulan_audit) < {$bulan}  AND YEAR(bulan_audit) =  {$tahun}")
-        ->get();
-        $temuan1 = db::table('temuan')->join('kda','temuan.kda_id','=','kda.id_kda')->whereIn('kda_id', $semuakda)
-        ->where('temuan.status',0)
-        ->orderBy('kda.bulan_audit')->get();
-        return response()->json($temuan1);
-    }
+    
     public function updatekda(Request $request)
     {
         $data = $request->all();
@@ -184,6 +173,27 @@ class KdaController extends Controller
 		$summernote = DB::table('summernotes')->get();
 		//dd($summernote);
         return view("templatekda", compact('summernote'));
+	}
+	public function getkda(Request $request)
+	{
+		$id = $request->input('id');
+		//$kda = kda::find($id)->join('unit');
+		$kda = db::table('kda')->join('unit','kda.unit','=','unit.id_unit')
+        ->where('kda.id_kda',$id)->first();
+		return response()->json($kda);
+	}
+	public function getkelengkapan(Request $request)
+	{
+		$id = $request->input('id');
+		//$kda = kda::find($id)->join('unit');
+		$kda_ket = db::table('kda_keterangan2')->where('kda_id',$id)->get();
+		return response()->json($kda_ket);
+	}
+	public function getketerangan(Request $request)
+	{
+		$id = $request->input('id');
+		$keterangan = DB::table('kda_keterangan')->where('kda_id',$id)->first();
+		return response()->json($keterangan);
 	}
 
 

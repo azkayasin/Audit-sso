@@ -60,7 +60,7 @@ Route::get('/pilihkda2', 'kdacontroller@pilih2');
 Route::get('pilihkda/{id}', 'kdacontroller@formkda');
 
 Route::get('pdf3',  'pdfcontroller@buatpdf3');
-Route::get('pdf/{id}',  'pdfcontroller@downloadpdf');
+// Route::get('pdf/{id}',  'pdfcontroller@downloadpdf');
 
 Route::get('download',  'pdfcontroller@downloadkdatriwulan');
 //Route::get('download/tahun/{tahun}/triwulan/{i}', 'pdfcontroller@downloadkdatriwulan2')->name('downloadtriwulan');
@@ -77,10 +77,10 @@ Route::post('/kda/temuan', 'cobacontroller@gettemuan');
 
 Route::get('/temuan', 'cobacontroller@bulan');
 //Route::get('/temuan/update', 'cobacontroller@updatetemuan');
-Route::post('/kda/data', 'cobacontroller@getkda');
+// Route::post('/kda/data', 'cobacontroller@getkda');
 
 // Route::post('/kda/update', 'cobacontroller@updatekda');
-Route::post('/kda/keterangan', 'cobacontroller@getketerangan');
+// Route::post('/kda/keterangan', 'cobacontroller@getketerangan');
 Route::post('/keterangan/update', 'cobacontroller@updateketerangan');
 Route::get('/kda/coba/{id}', 'cobacontroller@coba');
 
@@ -108,8 +108,11 @@ Route::get('/logout2', 'AuthController@logout2')->name('logout2');
 Route::group(['middleware' => 'Admin'], function () {
 	Route::get('/admin','AuthController@home')->name('home1');
 	Route::get('/kda', 'KdaController@index');
+	Route::post('/kda/data', 'KdaController@getkda');
+	Route::post('/kda/kelengkapan', 'KdaController@getkelengkapan');
+	Route::post('/kda/keterangan', 'KdaController@getketerangan');
 	Route::post('/kda/update', 'KdaController@updatekda');
-	Route::post('/temuan/temuanlama', 'KdaController@gettemuanlama');
+	Route::post('/temuan/temuanlama', 'TemuanController@gettemuanlama');
 	Route::get('/temuan/update', 'TemuanController@updatetemuan');
 
 	Route::get('/buatkda', 'KdaController@buatkda');
@@ -117,6 +120,7 @@ Route::group(['middleware' => 'Admin'], function () {
 	Route::post("tambahkda2","KdaController@tambahkda2");
 	Route::post("tambahkda3","KdaController@tambahkda3");
 	
+	Route::get('pdf/{id}',  'PdfController@downloadpdf');
 
 	Route::get('/kdatriwulan', 'KdaController@triwulan');
 	Route::get('download/triwulan/{tahun}/{sesi?}', [
@@ -125,6 +129,7 @@ Route::group(['middleware' => 'Admin'], function () {
 	]);
 
 	Route::get('/templatekda', 'KdaController@template');
+	Route::get('/temuankda', 'TemuanController@index');
 
 });
 

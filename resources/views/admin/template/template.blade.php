@@ -57,6 +57,7 @@ else {
   <title>Sistem Audit Keuangan</title>
 </head>
 <body>
+<div class="wrapper">
 <header class="main-header">
   <!-- Logo -->
   <a href="index2.html" class="logo">
@@ -108,7 +109,6 @@ else {
     </div>
   </nav>
 </header>
-
 <aside class="main-sidebar">
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
@@ -122,7 +122,7 @@ else {
           <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
       </div>
-      <!-- search form -->
+{{--       <!-- search form -->
       <form action="#" method="get" class="sidebar-form">
         <div class="input-group">
           <input type="text" name="q" class="form-control" placeholder="Search...">
@@ -131,24 +131,12 @@ else {
                 </button>
               </span>
         </div>
-      </form>
+      </form> --}}
       {{-- ubah --}}
       <!-- /.search form -->
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">MAIN NAVIGATION</li>
-        <li class="treeview">
-          <a href="#">
-            <i class="fa fa-table"></i> <span>Tables</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="pages/tables/simple.html"><i class="fa fa-circle-o"></i> Simple tables</a></li>
-            <li><a href="pages/tables/data.html"><i class="fa fa-circle-o"></i> Data tables</a></li>
-          </ul>
-        </li>
         <li class="treeview">
           <a href="#">
             <i class="fa fa-table"></i> <span>KDA</span>
@@ -165,10 +153,14 @@ else {
         <li>
           <a href="{{ url('kdatriwulan') }}"><i class="fa fa-table"></i> Laporan KDA</a>
         </li>
+        <li>
+          <a href="{{ url('temuankda') }}"><i class="fa fa-table"></i> Temuan</a>
+        </li>
       </ul>
     </section>
     <!-- /.sidebar -->
   </aside>
+
 
   <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
@@ -201,6 +193,7 @@ else {
         </div> --}}
     </section>
   </div>
+</div>
 
 
 </body>

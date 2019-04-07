@@ -20,6 +20,12 @@ use PDF;
 
 class TemuanController extends Controller
 {
+    public function index()
+    {
+        $kda = DB::table('kda')->leftjoin('unit','kda.unit','=','unit.id_unit')->where('kda.jenis', 2)->orderBy('kda.bulan_audit')->get();
+        $unit = DB::table('unit')->get();
+        return view ("temuan2", compact('kda','unit'));
+    }
     public function updatetemuan(Request $request)
     {
 
@@ -31,8 +37,21 @@ class TemuanController extends Controller
             'status' => '1'
         ]);
         
-        return redirect('/kda');
+        return redirect('/temuankda');
 
+    }
+    public function gettemuanlama(Request $request){
+        //untuk mencatat temuan sebelumnya (belum kondisi yg status 1)
+        $unit = $request->input('unit');
+        $bulan = $request->input('bulan');
+        $tahun = $request->input('tahun');
+        $semuakda = kda::select('id_kda')->where('unit', $unit)
+        ->whereRaw(" MONTH(bulan_audit) < {$bulan}  AND YEAR(bulan_audit) =  {$tahun}")
+        ->get();
+        $temuan1 = db::table('temuan')->join('kda','temuan.kda_id','=','kda.id_kda')->whereIn('kda_id', $semuakda)
+        ->where('temuan.status',0)
+        ->orderBy('kda.bulan_audit')->get();
+        return response()->json($temuan1);
     }
 
 

@@ -117,12 +117,12 @@ class cobacontroller extends Controller
 		return view ("temuan", compact("temuan"));
 
 	}
-	public function getkda(Request $request)
-	{
-		$id = $request->input('id');
-		$kda = kda::find($id);
-		return response()->json($kda);
-	}
+	// public function getkda(Request $request)
+	// {
+	// 	$id = $request->input('id');
+	// 	$kda = kda::find($id);
+	// 	return response()->json($kda);
+	// }
 	// public function updatekda(Request $request)
 	// {
 
@@ -151,15 +151,15 @@ class cobacontroller extends Controller
         //return ($kda);
 		return response()->json($temuan);
 	}
-	public function getketerangan(Request $request)
-	{
-		$id = $request->input('id');
-		//$keterangan = kda::find();
-		$keterangan = DB::table('kda_keterangan')->where('kda_id',$id)->first();
-        //$kda = DB::table('kda')->whereIn('id_kda', $id)->get();
-        //return ($keterangan);
-		return response()->json($keterangan);
-	}
+	// public function getketerangan(Request $request)
+	// {
+	// 	$id = $request->input('id');
+	// 	//$keterangan = kda::find();
+	// 	$keterangan = DB::table('kda_keterangan')->where('kda_id',$id)->first();
+ //        //$kda = DB::table('kda')->whereIn('id_kda', $id)->get();
+ //        //return ($keterangan);
+	// 	return response()->json($keterangan);
+	// }
 	// public function updatetemuan(Request $request)
 	// {
 

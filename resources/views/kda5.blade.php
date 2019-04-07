@@ -12,37 +12,32 @@
     <div class="box">
       <div class="box-header">
           <h3 class="box-title">List KDA</h3>
+          <h3>Klasifikasi</h3>
+                <div class="form-group">
+                  <label for="inputEmail3" class="col-sm-2 control-label">Unit</label>
+                  <div class="col-sm-10">
+                    <select id="col1_filter" class="column_filter form-control" data-column="1">
+                      <option value="">Semua</option>
+                      @foreach($unit as $data => $value)
+                       <option value="{{$value->nama}}">{{$value->nama}}</option>
+                       @endforeach
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="inputPassword3" class="col-sm-2 control-label">Jenis</label>
+                  <div class="col-sm-10">
+                    <select id="col2_filter" class="column_filter form-control" data-column="2">
+                      <option value="">Semua</option>
+                      <option>KDA tanpa temuan</option>
+                      <option>KDA dengan temuan</option>
+                      <option>KDA Unaudited</option>
+                      <option>KDA tanpa pengajuan UMK</option>
+                      </select>
+                  </div>
+                </div>
         </div>
           <div class="box-body">
-            <table cellpadding="3" cellspacing="0" border="0" style="width: 67%; margin: 0 auto 2em auto;">
-                <thead>
-                    <tr>
-                        <th>Target</th>
-                        <th>Search text</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr id="filter_col1" data-column="1">
-                        <td>Unit</td>
-                        <td align="center"><select class="column_filter" id="col1_filter">
-                            <option></option>
-                            @foreach($unit as $data => $value)
-                             <option value="{{$value->nama}}">{{$value->nama}}</option>
-                             @endforeach
-                          </select></td>
-                    </tr>
-                    <tr id="filter_col2" data-column="2">
-                        <td>Jenis</td>
-                        <td align="center"><select id="col2_filter" class="column_filter">
-                            <option value="">All</option>
-                            <option>KDA tanpa temuan</option>
-                            <option>KDA dengan temuan</option>
-                            <option>KDA Unaudited</option>
-                            <option>KDA tanpa pengajuan UMK</option>
-                            </select></td>
-                    </tr>
-                </tbody>
-            </table>
             <table id="example1" class="table table-bordered table-striped">
                   <thead>
                     <tr>
@@ -50,7 +45,7 @@
                       <th>nama kda</th>
                       <th>Jenis Kda</th>
                       <th>Data Pelengkap</th>
-                      <th>Edit</th>
+                      <th>Lihat Data</th>
                       <th>Aksi</th>
                     </tr>
                   </thead>
@@ -62,10 +57,10 @@
                       <td>{{ $kda->nama}}-{{$kda->bulan_audit}}</td>
                       @if ($kda->jenis == 1)
                       <td>KDA tanpa temuan</td>
-                      <td>Tidak ada temuan</td>
+                      <td><button class="btn btn-xs btn-warning" data-toggle="modal" data-target="#modal-pelengkap" onclick="kelengkapanupdate('{{ $kda->id_kda }}')">lihat</button></td>
                       @elseif ($kda->jenis == 2)
                       <td>KDA dengan temuan</td>
-                      <td><button class="btn btn-xs btn-warning" data-toggle="modal" data-target="#modal-temuan" onclick="temuanupdate('{{ $kda->id_kda }}')">lihat</button></td>
+                      <td><button class="btn btn-xs btn-warning" data-toggle="modal" data-target="#modal-pelengkap" onclick="kelengkapanupdate('{{ $kda->id_kda }}')">lihat</button></td>
                       @elseif ($kda->jenis == 3)
                       <td>KDA Unaudited</td>
                       <td><button class="btn btn-xs btn-warning" data-toggle="modal" data-target="#modal-keterangan" onclick="keteranganupdate('{{ $kda->id_kda }}')">lihat</button></td>
@@ -73,7 +68,7 @@
                       <td>KDA tanpa pengajuan UMK</td>
                       <td><button class="btn btn-xs btn-warning" data-toggle="modal" data-target="#modal-keterangan" onclick="keteranganupdate('{{ $kda->id_kda }}')">lihat</button></td>
                       @endif
-                      <td><button class="btn btn-xs btn-warning" data-toggle="modal" data-target="#modal-edit" onclick="submitUpdate('{{ $kda->id_kda }}')">Edit</button></td>
+                      <td><button class="btn btn-xs btn-warning" data-toggle="modal" data-target="#modal-edit" onclick="submitUpdate('{{ $kda->id_kda }}')">Lihat</button></td>
                       <td><a href="{{ url('pdf/'.$kda->id_kda) }}"><button>Download</button></a> </td>
                     </tr>
                     @endforeach
@@ -84,7 +79,7 @@
                       <th>nama kda</th>
                       <th>Jenis Kda</th>
                       <th>Data Pelengkap</th>
-                      <th>Edit</th>
+                      <th>Lihat Data</th>
                       <th>Aksi</th>
                     </tr>
                   </tfoot>
@@ -94,34 +89,33 @@
   </div>
 </div>
 
-<div class="modal fade" id="modal-temuan">
+<div class="modal fade" id="modal-pelengkap">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="temuanclose()">
           <span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title">Temuan</h4>
+          <h4 class="modal-title">Kelengkapan Data</h4>
           <div id="test"></div>
       </div>
         <div class="modal-body">
-          <form action="{{url('/temuan/update')}}" method="get" id="tambah_kda" enctype="multipart/form-data">
+          <form action="{{url('/kelengkapan/update')}}" method="get" id="tambah_kda" enctype="multipart/form-data">
             <div>
               <table class="table table-bordered table-striped">
                 <thead>
                   <tr>
-                    <th>Kwitansi</th>
+                    <th>Kelengkapan</th>
+                    <th>jumlah</th>
                     <th>Nominal</th>
-                    <th>Keterangan</th>
-                    <th>Konfirmasi</th>
                   </tr>
-                  <tbody id="temuan">
+                  <tbody id="kelengkapan">
                   </tbody>
                 </thead>
               </table>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-default pull-left" data-dismiss="modal" onclick="temuanclose()" >Close</button>
-              <button type="submit" class="btn btn-primary">Simpan</button>
+              {{-- <button type="submit" class="btn btn-primary">Simpan</button> --}}
             </div>
           </form>
         </div>
@@ -191,10 +185,10 @@
         <div class="modal-body">
           <form action="{{url('/kda/update')}}" method="POST" id="tambah_kda" enctype="multipart/form-data">
             {{csrf_field()}}
-            <input type="text" id="idkda" name="idkda">
+            <input type="hidden" id="idkda" name="idkda">
             <div class="form-group has-feedback">
               <label class="control-label">Nama Unit</label>
-              <input type="text" class="form-control" id="unit" name="unit" value="{{old('unit')}}" placeholder="Nama unit" required>
+              <input type="text" class="form-control" id="unit" name="unit" value="{{old('unit')}}" placeholder="Nama unit" readonly="">
               @if ($errors->has('unit'))
               <div class="alert alert-danger">
                 <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> {{ $errors->first('unit') }}</div>
@@ -202,7 +196,7 @@
               </div>
               <div class="form-group has-feedback">
                 <label class="control-label">Jenis Kda</label>
-                <input type="text" class="form-control" id="jenis" name="jenis" value="{{old('jenis')}}" placeholder="jenis" required>
+                <input type="text" class="form-control" id="jenis" name="jenis" value="{{old('jenis')}}" placeholder="jenis" readonly="">
                 @if ($errors->has('jenis'))
                 <div class="alert alert-danger">
                   <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> {{ $errors->first('jenis') }}</div>
@@ -210,7 +204,7 @@
                 </div>
                 <div class="form-group has-feedback">
                   <label class="control-label">Tanggal Dibuat</label>
-                  <input type="text" class="form-control" id="datetimepicker" name="bulan_audit" value="{{old('bulan_audit')}}" placeholder="Tanggal" required>
+                  <input type="text" class="form-control" id="datetimepicker" name="bulan_audit" value="{{old('bulan_audit')}}" placeholder="Tanggal" readonly="">
                   @if ($errors->has('tanggal'))
                   <div class="alert alert-danger">
                     <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> {{ $errors->first('tanggal') }}</div>
@@ -218,7 +212,7 @@
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Simpan</button>
+                    {{-- <button type="submit" class="btn btn-primary">Simpan</button> --}}
                   </div>
             </form>
         </div>
@@ -229,17 +223,31 @@
 
 @section('addjs')
 <script>
+  $(function () {
+    //Initialize Select2 Elements
+    $('#col1_filter').select2(
+    {
+      placeholder: "Pilih Unit",
+      allowClear: true
+    })
+  })
+</script>
+<script>
   function filterColumn ( i ) {
       $('#example1').DataTable().column( i ).search(
           $('#col'+i+'_filter').val()
       ).draw();
+      console.log($('#col'+i+'_filter').val())
   }
   $(document).ready(function (){
     //var table = $('#example1').DataTable();
     $('#example1').DataTable();
 
     $('select.column_filter').on( 'keyup click', function () {
-        filterColumn( $(this).parents('tr').attr('data-column') );
+        filterColumn( $(this).attr('data-column') );
+    } );
+    $('#col1_filter').on( 'change', function () {
+        filterColumn( $(this).attr('data-column') );
     } );
     $('select2').select2(
     {
@@ -288,8 +296,11 @@
         success: function(data) {
           console.log(data);
           $('#idkda').val(data.id_kda);
-          $('#unit').val(data.unit);
-          $('#jenis').val(data.jenis);
+          $('#unit').val(data.nama);
+          if (data.jenis == 1) $('#jenis').val("KDA Tanpa Temuan");
+          else if(data.jenis == 2) $('#jenis').val("KDA Dengan Temuan");
+          else if(data.jenis == 3) $('#jenis').val("KDA Unaudited");
+          else $('#jenis').val("KDA Tanpa Pengajuan UMK");
           $('#datetimepicker').val(data.bulan_audit);
         }
       });
@@ -320,9 +331,9 @@
       });
     }
     
-    temuanupdate = function(id){
+    kelengkapanupdate = function(id){
       $.ajax({
-        url: '/kda/temuan',
+        url: '/kda/kelengkapan',
         type: 'POST',
         data: {
           '_token': "{{ csrf_token() }}",
@@ -334,39 +345,30 @@
         dataType: 'json',
         success: function(data1) {
 
-          console.log(data1);
-          var jumlah = data1.length;
-          console.log(jumlah);
-          var temuansemua = '';
+          console.log(data1);      
+          var ketsemua = '';
 
           //var data1 = $.parseJSON(data1);
-          for (var i = 0; i < jumlah; i++)
+          for (var i = 0; i < data1.length; i++)
           {
-            console.log (data1[i]['kwitansi']);
-            console.log (data1[i]['keterangan']);
-            var kwitansi = data1[i]['kwitansi'];
+            var kelengkapan = data1[i]['kelengkapan'];
             var nominal = data1[i]['nominal'];
-            var keterangan = data1[i]['keterangan'];
-            var status = data1[i]['status'];
-            var id = data1[i]['id'];
-            if (status) {
-              temuansemua = 
-            `<tr><td name="kwitansi[${i}]">${kwitansi}</td><td name="nominal[${i}]">${nominal}</td><td name="keterangan[${i}]">${keterangan}</td><td>Telah dikonfirmasi</td></tr>`;
-             $("#temuan").append(temuansemua);
+            var jumlah = data1[i]['jumlah'];
+            if (nominal == null || jumlah == null) {
+             ketsemua = `<tr><td name="kelengkapan[${i}]">${kelengkapan}</td><td name="jumlah[${i}]">-</td><td name="nominal[${i}]">-</tr>`; 
             }
-            else
-            {
-              temuansemua= 
-              `<tr><td name="kwitansi[${i}]">${kwitansi}</td><td name="nominal[${i}]">${nominal}</td><td name="keterangan[${i}]">${keterangan}</td><td><input type="checkbox" name="checkbox[]" data-id="${id}" value="${id}" id="checkbox[]"></td></tr>`;
-              $("#temuan").append(temuansemua);
+            else{
+              ketsemua = `<tr><td name="kelengkapan[${i}]">${kelengkapan}</td><td name="jumlah[${i}]">${jumlah}</td><td name="nominal[${i}]">${nominal}</tr>`;
             }
+            
+             $("#kelengkapan").append(ketsemua);
           }
         }
       });
     }
 
     temuanclose = function(){
-      $("#temuan").empty();
+      $("#kelengkapan").empty();
     }
 
   });     
