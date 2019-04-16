@@ -187,25 +187,34 @@ class PdfController extends Controller
 				}
 				else{
 					//untuk mencatat kda keterangan2
+					
+					$i = 1;
 					$list_keterangan='';
-					$keterangans = '<table class=="tg">
+					$keterangans = '<table align="center" style="width:100%">
 								<thead>
-									<th>Kelengkapan</th>
-									<th>Ada/ Tidak Ada</th>
-									<th>Jumlah</th>
-									<th>Nominal</th>
+								  <tr>
+								  	<th rowspan="2" align="center">No</th>
+								    <th rowspan="2" align="center">Kelengkapan</th>
+								    <th colspan="3" align="center">Keterangan</th>
+								  </tr>
+								  <tr>
+								    <th align="center">Ada /Tidak ada</th>
+								    <th align="center">Jumlah</th>
+								    <th align="center">Nominal (Rp)</th>
+								  </tr>
 								</thead>
-								<tbody>
-								<tr></tr>';
+								<tbody>';
 					if ($kda_ket->count() > 0) {
 						foreach ($kda_ket as $kda_ket) {
 						$list_keterangan .=
 									'<tr>
-										<td>'.$kda_ket->kelengkapan.'</td>
-										<td>'.$kda_ket->kesediaan.'</td>
-										<td>'.$kda_ket->jumlah.'</td>
-										<td>Rp. '.$kda_ket->nominal.'</td>
+										<td align="center">'.$i.'</td>
+										<td align="left">&nbsp;&nbsp;'.$kda_ket->kelengkapan.'</td>
+										<td align="center">'.$kda_ket->kesediaan.'</td>
+										<td align="center">'.$kda_ket->jumlah.'</td>
+										<td align="right">Rp. '.number_format($kda_ket->nominal, 2, ',', '.').'&nbsp;&nbsp;</td>
 									</tr>';
+									$i++;
 								}
 					$keterangans .= $list_keterangan;
 					$keterangans .= '</tbody>
@@ -217,6 +226,7 @@ class PdfController extends Controller
 										<td>-</td>
 										<td>-</td>
 										<td>-</td>
+										<td>-</td>
 									</tr></tbody>
 							</table>';
 					}
@@ -225,12 +235,14 @@ class PdfController extends Controller
 					
 				}
 				//untuk mencatata temuan sekarang
+					$j = 1;
 					$list_temuan='';
-					$temuansekarang = '<table class="table table-bordered table-striped">
+					$temuansekarang = '<table  align="center" style="width:100%">
 								<thead>
-									<th>Kwitansi</th>
-									<th>nominal</th>
-									<th>keterangan</th>
+									<th align="center" width=5%>No</th>
+									<th align="center">No. Kwitansi</th>
+									<th align="center">Nominal (Rp)</th>
+									<th align="center" width=50%>Uraian Temuan</th>
 								</thead>
 								<tbody>
 								<tr></tr>';
@@ -238,9 +250,10 @@ class PdfController extends Controller
 						foreach ($temuan as $tem) {
 						$list_temuan .=
 									'<tr>
-										<td>'.$tem->kwitansi.'</td>
-										<td>'.$tem->nominal.'</td>
-										<td>'.$tem->keterangan.'</td>
+										<td align="center">'.$j.'</td>
+										<td align="center">'.$tem->kwitansi.'</td>
+										<td align="right">'.number_format($tem->nominal, 2, ',', '.').'&nbsp;&nbsp;</td>
+										<td align="center">'.$tem->keterangan.'</td>
 									</tr>';
 								}
 					$temuansekarang .= $list_temuan;
@@ -250,9 +263,10 @@ class PdfController extends Controller
 					else
 					{
 						$temuansekarang .= '<tr>
-										<td>-</td>
-										<td>-</td>
-										<td>-</td>
+										<td align="center">-</td>
+										<td align="center">-</td>
+										<td align="right">-&nbsp;&nbsp;</td>
+										<td align="center">-</td>
 									</tr></tbody>
 							</table>';
 					}

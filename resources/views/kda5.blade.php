@@ -12,7 +12,7 @@
     <div class="box">
       <div class="box-header">
           <h3 class="box-title">List KDA</h3>
-          <h3>Klasifikasi</h3>
+          <h3>Filter</h3>
                 <div class="form-group">
                   <label for="inputEmail3" class="col-sm-2 control-label">Unit</label>
                   <div class="col-sm-10">
@@ -25,9 +25,32 @@
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="inputPassword3" class="col-sm-2 control-label">Jenis</label>
+                  <label for="inputPassword3" class="col-sm-2 control-label">Bulan</label>
                   <div class="col-sm-10">
                     <select id="col2_filter" class="column_filter form-control" data-column="2">
+                      <option value="">Semua</option>
+                      <option>Januari</option><option>Februari</option><option>Maret</option>
+                      <option>April</option><option>Mei</option><option>Juni</option>
+                      <option>Juli</option><option>Agustus</option><option>September</option>
+                      <option>Oktober</option><option>November</option><option>Desember</option>
+                      </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="inputPassword3" class="col-sm-2 control-label">Tahun</label>
+                  <div class="col-sm-10">
+                    <select id="col3_filter" class="column_filter form-control" data-column="3">
+                      <option value="">Semua</option>
+                      <option>2018</option><option>2019</option><option>2020</option>
+                      <option>2021</option><option>2022</option><option>2023</option>
+                      <option>2024</option><option>2025</option><option>2026</option>
+                      </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="inputPassword3" class="col-sm-2 control-label">Jenis</label>
+                  <div class="col-sm-10">
+                    <select id="col4_filter" class="column_filter form-control" data-column="4">
                       <option value="">Semua</option>
                       <option>KDA tanpa temuan</option>
                       <option>KDA dengan temuan</option>
@@ -41,8 +64,10 @@
             <table id="example1" class="table table-bordered table-striped">
                   <thead>
                     <tr>
-                      <th>no</th>
-                      <th>nama kda</th>
+                      <th>No</th>
+                      <th>Nama Unit</th>
+                      <th>Bulan</th>
+                      <th>Tahun</th>
                       <th>Jenis Kda</th>
                       <th>Data Pelengkap</th>
                       <th>Lihat Data</th>
@@ -54,7 +79,9 @@
                     @foreach($kda as $key => $kda)
                     <tr>
                       <td>{{$i++}}</td>
-                      <td>{{ $kda->nama}}-{{$kda->bulan_audit}}</td>
+                      <td>{{ $kda->nama}}</td>
+                      <td>{{ $kda->bulan}}</td>
+                      <td>{{ $kda->tahun}}</td>
                       @if ($kda->jenis == 1)
                       <td>KDA tanpa temuan</td>
                       <td><button class="btn btn-xs btn-warning" data-toggle="modal" data-target="#modal-pelengkap" onclick="kelengkapanupdate('{{ $kda->id_kda }}')">lihat</button></td>
@@ -75,8 +102,10 @@
                   </tbody>
                   <tfoot>
                     <tr>
-                      <th>no</th>
-                      <th>nama kda</th>
+                      <th>No</th>
+                      <th>Nama Unit</th>
+                      <th>Bulan</th>
+                      <th>Tahun</th>
                       <th>Jenis Kda</th>
                       <th>Data Pelengkap</th>
                       <th>Lihat Data</th>
@@ -99,12 +128,13 @@
           <div id="test"></div>
       </div>
         <div class="modal-body">
-          <form action="{{url('/kelengkapan/update')}}" method="get" id="tambah_kda" enctype="multipart/form-data">
+          <form action="{{url('kda/kelengkapan/update')}}" method="get" id="update_kelengkapan" enctype="multipart/form-data">
             <div>
               <table class="table table-bordered table-striped">
                 <thead>
                   <tr>
                     <th>Kelengkapan</th>
+                    <th>Ada / Tidak Ada</th>
                     <th>jumlah</th>
                     <th>Nominal</th>
                   </tr>
@@ -115,7 +145,7 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-default pull-left" data-dismiss="modal" onclick="temuanclose()" >Close</button>
-              {{-- <button type="submit" class="btn btn-primary">Simpan</button> --}}
+              <button type="submit" class="btn btn-primary">Simpan</button>
             </div>
           </form>
         </div>
@@ -219,6 +249,7 @@
     </div>
   </div><!-- /.modal -->
 </div>
+
 @endsection
 
 @section('addjs')
@@ -227,7 +258,7 @@
     //Initialize Select2 Elements
     $('#col1_filter').select2(
     {
-      placeholder: "Pilih Unit",
+      placeholder: "Semua",
       allowClear: true
     })
   })
@@ -353,15 +384,32 @@
           {
             var kelengkapan = data1[i]['kelengkapan'];
             var nominal = data1[i]['nominal'];
+            var kesediaan = data1[i]['kesediaan'];
             var jumlah = data1[i]['jumlah'];
-            if (nominal == null || jumlah == null) {
-             ketsemua = `<tr><td name="kelengkapan[${i}]">${kelengkapan}</td><td name="jumlah[${i}]">-</td><td name="nominal[${i}]">-</tr>`; 
+            var id = data1[i]['id'];
+            if (nominal == null || jumlah == null || kesediaan == null) {
+             ketsemua = `<tr><td> <input type="hidden" name="id[${i}]" value="${id}"><input type="text" name="kelengkapan[${i}]" value="${kelengkapan}"></td>
+             <td><select name="kesediaan[${i}]" id="kesediaan">
+                        <option value=""></option>
+                        <option value="Ada">Ada</option>
+                        <option value="Tidak Ada">Tidak</option>
+                      </select></td>
+             <td><input type="text" name="jumlah[${i}]" value="" size="10"></td>
+             <td><input type="text" name="nominal[${i}]" value=""></tr>`; 
+              $("#kelengkapan").append(ketsemua);
             }
             else{
-              ketsemua = `<tr><td name="kelengkapan[${i}]">${kelengkapan}</td><td name="jumlah[${i}]">${jumlah}</td><td name="nominal[${i}]">${nominal}</tr>`;
-            }
-            
+              ketsemua = `<tr><td> <input type="hidden" name="id[${i}]" value="${id}"><input type="text" name="kelengkapan[${i}]" value="${kelengkapan}"></td>
+              <td><select name="kesediaan[${i}]" id="kesediaan[${i}]">
+                        <option value=""></option>
+                        <option value="Ada">Ada</option>
+                        <option value="Tidak Ada">Tidak</option>
+                      </select></td>
+             <td><input type="text" name="jumlah[${i}]" value="${jumlah}" size ="10"></td>
+             <td><input type="text" name="nominal[${i}]" value="${nominal}"></tr>`;
              $("#kelengkapan").append(ketsemua);
+             document.getElementById(`kesediaan[${i}]`).value = kesediaan;
+            }
           }
         }
       });

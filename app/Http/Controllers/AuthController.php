@@ -86,6 +86,7 @@ class AuthController extends Controller
 
         $_SESSION['userinfo'] = $userInfo;
         $_SESSION['userinfo2'] = $userInfo->email;
+        $_SESSION['username'] = $userInfo->name;
         $_SESSION['id_token'] = $oidc->getIdToken();
 
         return redirect('/tujuan');

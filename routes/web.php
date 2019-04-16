@@ -110,6 +110,7 @@ Route::group(['middleware' => 'Admin'], function () {
 	Route::get('/kda', 'KdaController@index');
 	Route::post('/kda/data', 'KdaController@getkda');
 	Route::post('/kda/kelengkapan', 'KdaController@getkelengkapan');
+	Route::get('/kda/kelengkapan/update', 'KdaController@updatekelengkapan');
 	Route::post('/kda/keterangan', 'KdaController@getketerangan');
 	Route::post('/kda/update', 'KdaController@updatekda');
 	Route::post('/temuan/temuanlama', 'TemuanController@gettemuanlama');

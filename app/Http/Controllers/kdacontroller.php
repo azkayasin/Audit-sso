@@ -18,7 +18,26 @@ class KdaController extends Controller
 {
 	public function index()
 	{
+		 $namabulan = array(
+				                '01' => 'Januari',
+				                '02' => 'Februari',
+				                '03' => 'Maret',
+				                '04' => 'April',
+				                '05' => 'Mei',
+				                '06' => 'Juni',
+				                '07' => 'Juli',
+				                '08' => 'Agustus',
+				                '09' => 'September',
+				                '10' => 'Oktober',
+				                '11' => 'November',
+				                '12' => 'Desember',
+				        );
 		$kda = DB::table('kda')->leftjoin('unit','kda.unit','=','unit.id_unit')->orderBy('kda.bulan_audit')->get();
+		foreach ($kda as $key => $value) {
+			$tahun = date("y",strtotime($value->bulan_audit));
+			$value->bulan = $namabulan[date("m",strtotime($value->bulan_audit))];
+			$value->tahun = "20${tahun}";
+		}
 		//dd($kda);
 		$unit = DB::table('unit')->get();
     	//$kda = DB::table('kda')->get();
@@ -58,6 +77,7 @@ class KdaController extends Controller
             $kda->masa_audit = $tanggaltampung;
             $kda->bulan_audit = $input['bulan_audit'];
             $kda->jenis = 1;
+            $kda_created_by = $input['auditor'];
             $kda->save();
 
             $jumlah = count($input['kelengkapan']);
@@ -162,6 +182,7 @@ class KdaController extends Controller
     public function updatekda(Request $request)
     {
         $data = $request->all();
+        //dd($data);
         $kda = kda::find($request->idkda);
         $kda->update($data, ['except'=>'_token']);
         return redirect('/kda');
@@ -194,6 +215,25 @@ class KdaController extends Controller
 		$id = $request->input('id');
 		$keterangan = DB::table('kda_keterangan')->where('kda_id',$id)->first();
 		return response()->json($keterangan);
+	}
+	public function updatekelengkapan(Request $request)
+	{
+		$data = $request->all();
+		//dd($data);
+		$jumlah = count($data['kelengkapan']) ;
+
+		for ($i=0; $i < $jumlah ; $i++) { 
+			$updatedata = [
+            'kelengkapan' => $data['kelengkapan'][$i],
+            'jumlah' =>$data['jumlah'][$i],
+            'nominal' => $data['nominal'][$i],
+            'kesediaan' => $data['kesediaan'][$i]
+        ];
+        $kda_ket = kda_keterangan2::find($data['id'][$i]);
+        $kda_ket->update($updatedata);
+		
+		}
+		return redirect('/kda');
 	}
 
 

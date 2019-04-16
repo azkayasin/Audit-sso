@@ -12,7 +12,7 @@
     <div class="box">
       <div class="box-header">
           <h3 class="box-title">List KDA</h3>
-          <h3>Klasifikasi</h3>
+          <h3>Filter</h3>
                 <div class="form-group">
                   <label for="inputEmail3" class="col-sm-2 control-label">Unit</label>
                   <div class="col-sm-10">
@@ -24,13 +24,38 @@
                     </select>
                   </div>
                 </div>
+                <div class="form-group">
+                  <label for="inputPassword3" class="col-sm-2 control-label">Bulan</label>
+                  <div class="col-sm-10">
+                    <select id="col2_filter" class="column_filter form-control" data-column="2">
+                      <option value="">Semua</option>
+                      <option>Januari</option><option>Februari</option><option>Maret</option>
+                      <option>April</option><option>Mei</option><option>Juni</option>
+                      <option>Juli</option><option>Agustus</option><option>September</option>
+                      <option>Oktober</option><option>November</option><option>Desember</option>
+                      </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="inputPassword3" class="col-sm-2 control-label">Tahun</label>
+                  <div class="col-sm-10">
+                    <select id="col3_filter" class="column_filter form-control" data-column="3">
+                      <option value="">Semua</option>
+                      <option>2018</option><option>2019</option><option>2020</option>
+                      <option>2021</option><option>2022</option><option>2023</option>
+                      <option>2024</option><option>2025</option><option>2026</option>
+                      </select>
+                  </div>
+                </div>
         </div>
           <div class="box-body">
             <table id="example1" class="table table-bordered table-striped">
                   <thead>
                     <tr>
-                      <th>no</th>
-                      <th>nama kda</th>
+                      <th>No</th>
+                      <th>Nama Unit</th>
+                      <th>Bulan</th>
+                      <th>Tahun</th>
                       <th>Jenis Kda</th>
                       <th>Temuan</th>
                       <th>Aksi</th>
@@ -41,7 +66,9 @@
                     @foreach($kda as $key => $kda)
                     <tr>
                       <td>{{$i++}}</td>
-                      <td>{{ $kda->nama}}-{{$kda->bulan_audit}}</td>
+                      <td>{{ $kda->nama}}</td>
+                      <td>{{ $kda->bulan}}</td>
+                      <td>{{ $kda->tahun}}</td>
                       <td>KDA dengan temuan</td>
                       <td><button class="btn btn-xs btn-warning" data-toggle="modal" data-target="#modal-temuan" onclick="temuanupdate('{{ $kda->id_kda }}')">lihat</button></td>
                       <td><a href="{{ url('pdf/'.$kda->id_kda) }}"><button>Download</button></a> </td>
@@ -50,8 +77,10 @@
                   </tbody>
                   <tfoot>
                     <tr>
-                      <th>no</th>
-                      <th>nama kda</th>
+                      <th>No</th>
+                      <th>Nama Unit</th>
+                      <th>Bulan</th>
+                      <th>Tahun</th>
                       <th>Jenis Kda</th>
                       <th>Temuan</th>
                       <th>Aksi</th>
@@ -115,6 +144,10 @@
   $(document).ready(function (){
     //var table = $('#example1').DataTable();
     $('#example1').DataTable();
+
+    $('select.column_filter').on( 'keyup click', function () {
+        filterColumn( $(this).attr('data-column') );
+    } );
 
      $('#col1_filter').on( 'change', function () {
         filterColumn( $(this).attr('data-column') );

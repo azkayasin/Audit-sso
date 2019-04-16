@@ -1,3 +1,13 @@
+<?php
+if (!isset($_SESSION['userinfo2']))
+        {
+            return redirect('/login2');
+        }
+else {
+  $userinfo = $_SESSION['userinfo2'];
+  $username = $_SESSION['username'];
+}
+?>
 @extends('admin.template.template')
 @section('judul')
   Buat KDA
@@ -14,6 +24,7 @@
           <h3 class="box-title">Buat KDA</h3>
         </div>
           <div class="box-body">
+            <input id="auditor1" readonly="readonly" type="hidden" value="<?php echo $username; ?>"  size="19" />
             <select id="pilihkda">
               <!-- <option value="" disabled selected>Select your option</option> -->
               <option value="1">kda tanpa Temuan</option>
@@ -146,13 +157,14 @@
 
   var jenis_kda;
   var postURL;
+  var auditor = $("#auditor1").val();
   $("#kda1").hide();
   $("#kda2").hide();
   $("#kda3").hide();
   $("#kda4").hide();
   $(document).ready(function(){
     $("#submitpilih").click(function(){
-
+      //$(".auditor").val(auditor);
       var listunit = `<select id="unit" class="unit2" name="unit" required=""  style="width: 15%">>
                       <option></option>
                       @foreach($unit as $data => $value)
@@ -171,6 +183,7 @@
       })
       var pilihan = $( "#pilihkda" ).val();
       if (pilihan == 1) {
+        console.log(auditor);
         $('#add_kda1')[0].reset();
         $('#dynamic-added1').remove();
         $(".keterangan1").empty();
@@ -245,6 +258,10 @@
       var jumlahtahun = document.getElementsByClassName("tahun");
       for(var i = 0; i< jumlahtahun.length ;i++){
         document.getElementsByClassName("tahun")[i].value = tahun;
+      }
+      var jumlahauditor = document.getElementsByClassName("auditor");
+      for(var i = 0; i< jumlahauditor.length ;i++){
+        document.getElementsByClassName("auditor")[i].value = auditor;
       }
       
 
