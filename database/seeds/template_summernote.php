@@ -200,12 +200,12 @@ h1 { font-family: TimesNewRoman, "Times New Roman", Times, Baskerville, Georgia,
 
         $template = new Summernote;
         $template->tipe = 'kda tanpa temuan web';
-        $template->content = '<div id="kda1" class="box"><!-- /.box-header -->
+        $template->content = '<div id="kda1" class="box">
 <div class="box-body">
 <div class="form-group">
 <h2 align="center">FORM KDA TANPA TEMUAN</h2>
 <form id="add_kda1" name="add_kda1">
-<div class="alert alert-danger print-error-msg" style="display: none;">&nbsp;</div>
+<!-- <div class="alert alert-danger print-error-msg" style="display: none;">&nbsp;</div> -->
 <!-- <div class="alert alert-success print-success-msg" style="display:none">
                       <ul></ul>
                     </div> -->
@@ -214,7 +214,7 @@ h1 { font-family: TimesNewRoman, "Times New Roman", Times, Baskerville, Georgia,
 <p style="text-align: left; line-height: 1;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><span style="font-size: 12px;">Sasaran&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;: Pengelolaan Keuangan</span></strong></p>
 <p style="text-align: left; line-height: 1;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><span style="font-size: 12px;">Masa Audit&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;: <input class=" masa_audit" name="masa_audit" type="month" /> </span></strong></p>
 <p style="text-align: left; line-height: 1;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><span style="font-size: 12px;">Bulan Audit&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; : <input class=" bulan_audit" name="bulan_audit" type="date" style="width:160px"/> </span></strong>&nbsp;</p>
-<div style="text-align: left; line-height: 1;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><span style="font-size: 12px;">Auditor&nbsp; &nbsp; &nbsp; &nbsp;</span></strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><span style="font-size: 12px;">: <input class="auditor" name="auditor" readonly="readonly" type="text" value="manusia"  size="19" /></span></strong></div>
+<div style="text-align: left; line-height: 1;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><span style="font-size: 12px;">Auditor&nbsp; &nbsp; &nbsp; &nbsp;</span></strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><span style="font-size: 12px;">: <input class="auditor"  id="auditor2" name="auditor" readonly type="text"  size="19" /></span></strong></div>
 <div style="text-align: left;"><strong><span style="font-size: 12px;">&nbsp;</span></strong></div>
 <div style="text-align: left;"><strong><span style="font-size: 12px;">&nbsp;</span></strong></div>
 <div style="text-align: left;"><strong>Kode Temuan 1.04</strong>&nbsp; &nbsp; : Ketidakpatuhan terhadap Peraturan : -</div>
@@ -282,7 +282,7 @@ h1 { font-family: TimesNewRoman, "Times New Roman", Times, Baskerville, Georgia,
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
-<p>Ir. Tony Bambang M.,PGDip&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<input class="auditor" readonly="readonly" type="text" value="manusia" /></p>
+<p>Ir. Tony Bambang M.,PGDip&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<input class="auditor" readonly="readonly" type="text" value="<?php echo $username; ?>" /></p>
 <input class="submitkda btn btn-info" name="submitkda" type="button" value="Submit" /></form></div>
 </div>
 </div>';
@@ -295,10 +295,10 @@ h1 { font-family: TimesNewRoman, "Times New Roman", Times, Baskerville, Georgia,
      <div class="form-group">
       <h2 align="center">FORM KDA DENGAN TEMUAN</h2> 
       <form name="add_kda2" id="add_kda2">  
-        <div class="alert alert-danger print-error-msg" style="display:none">
+<!--   <div class="alert alert-danger print-error-msg" style="display:none">
           <ul></ul>
         </div>
-<!--         <div class="alert alert-success print-success-msg" style="display:none">
+        <div class="alert alert-success print-success-msg" style="display:none">
           <ul></ul>
         </div> -->
 <p style="text-align: center;"><strong><span style="font-size: 12px;">KERTAS DATA AUDIT</span></strong></p>
@@ -310,7 +310,10 @@ h1 { font-family: TimesNewRoman, "Times New Roman", Times, Baskerville, Georgia,
 <div style="text-align: left;"><strong><span style="font-size: 12px;">&nbsp;</span></strong></div>
 <div style="text-align: left;"><strong><span style="font-size: 12px;">&nbsp;</span></strong></div>
 
-<div style="text-align: left; line-height: 1;"><strong><span style="font-size: 12px;">Kode Temuan 1.04</span></strong>&nbsp; &nbsp; : Ketidakpatuhan terhadap Peraturan : administrasi</div>
+<div style="text-align: left; line-height: 1;"><strong><span style="font-size: 12px;">Kode Temuan </span></strong>&nbsp; &nbsp; : Ketidakpatuhan terhadap Peraturan : <select name="kode_temuan">
+  <option value="1.04">Administrasi</option>
+  <option value="2.04">Kerugian Negara</option>
+</select></div>
 <div style="text-align: left; line-height: 1;"><strong>Deskripsi Masalah</strong>&nbsp; &nbsp; : Pertanggungjawaban pembayaran/ pembelian barang/jasa tidak akuntabel (bukti tidak lengkap/tidak valid)</div>
 <div style="text-align: left; line-height: 1;">&nbsp;</div>
 <div style="text-align: left; line-height: 1;"><span style="font-family: "Times New Roman";"><strong>Uraian</strong></span></div>
@@ -394,12 +397,12 @@ h1 { font-family: TimesNewRoman, "Times New Roman", Times, Baskerville, Georgia,
     <div class="form-group">
       <h2 align="center" id="judulform">FORM KDA 3 dan 4</h2>
        <form name="add_kda3" id="add_kda3">
-      <div class="alert alert-danger print-error-msg" style="display:none">
+      <!-- <div class="alert alert-danger print-error-msg" style="display:none">
         <ul></ul>
       </div>
       <div class="alert alert-success print-success-msg" style="display:none">
         <ul></ul>
-      </div>
+      </div> -->
 <p style="text-align: center;"><strong><span style="font-size: 12px;">KERTAS DATA AUDIT</span></strong></p>
 <p style="text-align: left; line-height: 1;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-weight: bold; font-size: 12px;">Unit Kerja</span>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<strong><span style="font-size: 12px;">:&nbsp;</span></strong><strong><span class="listunit" style="font-size: 12px;"></span></strong></p>
 <p style="text-align: left; line-height: 1;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><span style="font-size: 12px;">Sasaran&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;: Pengelolaan Keuangan</span></strong></p>
@@ -447,12 +450,12 @@ h1 { font-family: TimesNewRoman, "Times New Roman", Times, Baskerville, Georgia,
     <div class="form-group">
       <h2 align="center" id="judulform4">FORM KDA 3 dan 4</h2>  
      <form name="add_kda4" id="add_kda4">  
-      <div class="alert alert-danger print-error-msg" style="display:none">
+      <!-- <div class="alert alert-danger print-error-msg" style="display:none">
         <ul></ul>
       </div>
       <div class="alert alert-success print-success-msg" style="display:none">
         <ul></ul>
-      </div>
+      </div> -->
 <p style="text-align: center;"><strong><span style="font-size: 12px;">KERTAS DATA AUDIT</span></strong></p>
 <p style="text-align: left; line-height: 1;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-weight: bold; font-size: 12px;">Unit Kerja</span>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<strong><span style="font-size: 12px;">:&nbsp;</span></strong><strong><span class="listunit" style="font-size: 12px;"></span></strong></p>
 <p style="text-align: left; line-height: 1;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><span style="font-size: 12px;">Sasaran&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;: Pengelolaan Keuangan</span></strong></p>
