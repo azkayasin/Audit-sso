@@ -151,6 +151,14 @@ class PdfController extends Controller
 					}
 					
 					$contents = str_replace("temuanlama$", $table, $contents);
+					if ($kda->kode_temuan == "1.04") {
+						$contents = str_replace("deskripsi_temuan$", "Administrasi", $contents);	
+					}
+					else
+					{
+						$contents = str_replace("deskripsi_temuan$", "Kerugian Negara", $contents);		
+					}
+					$contents = str_replace("kode_temuan$", $kda->kode_temuan, $contents);
 					//akhir untuk mencatat temuan sebelumnya
 					
 				}
@@ -182,6 +190,7 @@ class PdfController extends Controller
 				$contents = str_replace("tahun$", "20{$tahun}", $contents);
 				$tanggalttd = $this->tgl_indo($kda->bulan_audit);
 				$contents = str_replace("tanggalttd$", $tanggalttd, $contents);
+				$contents = str_replace("auditor$", $kda->created_by, $contents);
 
 				if ($kda_ket == NULL) {
 				}

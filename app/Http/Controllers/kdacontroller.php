@@ -68,41 +68,58 @@ class KdaController extends Controller
 	}
 	public function tambahkda1(Request $request)
     {
-        $input = $request->all();
-            $tanggaltampung = $input['masa_audit'];
-            $tanggaltampung .="-01";
+    	$input = $request->all();
+    	$rules = [];
+    	$rules["unit"] = 'required';
+    	$messages = [
+		    'required' => 'Lengkapi dahulu data :attribute .',
+		];
+    	$validator = Validator::make($request->all(), $rules, $messages);
+    	if ($validator->passes())
+    	{
+    		$tanggaltampung = $input['masa_audit'];
+	        $tanggaltampung .="-01";
 
-            $kda= new kda;
-            $kda->unit = $input['unit'];
-            $kda->masa_audit = $tanggaltampung;
-            $kda->bulan_audit = $input['bulan_audit'];
-            $kda->jenis = 1;
-            $kda_created_by = $input['auditor'];
-            $kda->save();
+	        $kda= new kda;
+	        $kda->unit = $input['unit'];
+	        $kda->masa_audit = $tanggaltampung;
+	        $kda->bulan_audit = $input['bulan_audit'];
+	        $kda->jenis = 1;
+	        $kda->created_by = $input['auditor'];
+	        $kda->save();
 
-            $jumlah = count($input['kelengkapan']);
-            for ($i=0; $i < $jumlah; ++$i) 
-            {
+	        $jumlah = count($input['kelengkapan']);
+	        for ($i=0; $i < $jumlah; ++$i) 
+	        {
 
-                $ket= new kda_keterangan2;        
-                $ket->kelengkapan = $input['kelengkapan'][$i];
-                $ket->kesediaan= $input['kesediaan'][$i];
-                $ket->jumlah= $input['jumlah'][$i];
-                $ket->nominal = $input['nom'][$i];
-                $ket->kda_id= $kda->id_kda;
-                $ket->save();  
-            }
-            
-            //app('App\Http\Controllers\PdfController')->downloadpdf($kda->id_kda);
-            return response()->json(['success'=>'done']);
+	            $ket= new kda_keterangan2;        
+	            $ket->kelengkapan = $input['kelengkapan'][$i];
+	            $ket->kesediaan= $input['kesediaan'][$i];
+	            $ket->jumlah= $input['jumlah'][$i];
+	            $ket->nominal = $input['nom'][$i];
+	            $ket->kda_id= $kda->id_kda;
+	            $ket->save();  
+	        }
+	        
+	        //app('App\Http\Controllers\PdfController')->downloadpdf($kda->id_kda);
+	        return response()->json(['success'=>'done']);
+
+    	}
+    	return response()->json(['error'=>$validator->errors()->all()]);
+
+        
         
     }
     public function tambahkda2(Request $request)
     {
         $input = $request->all();
+        // dd($input);
+        // exit;
         $rules = [];
-
-
+        $messages = [
+		    'required' => 'Lengkapi dahulu data :attribute .',
+		];
+        $rules["unit"] = 'required';
         foreach($request->input('kwitansi') as $key => $value) {
             $rules["kwitansi.{$key}"] = 'required';
             $rules["nominal.{$key}"] = 'required';
@@ -123,6 +140,8 @@ class KdaController extends Controller
             $kda->masa_audit = $tanggaltampung;
             $kda->bulan_audit = $input['bulan_audit'];
             $kda->jenis = 2;
+            $kda->kode_temuan = $input['kode_temuan'];
+            $kda->created_by = $input['auditor'];
             $kda->save();
 
             $jumlah2 = count($input['kelengkapan']);
@@ -155,27 +174,37 @@ class KdaController extends Controller
     }
     public function tambahkda3(Request $request)
     {
-	    $input = $request->all();
-	    $tanggaltampung = $input['masa_audit'];
-	    $tanggaltampung .="-01";
+    	$input = $request->all();
+    	$rules["unit"] = 'required';
+    	$messages = [
+		    'required' => 'Lengkapi dahulu data :attribute .',
+		];
+    	$validator = Validator::make($request->all(), $rules, $messages);
+    	if ($validator->passes())
+    	{
+		    $tanggaltampung = $input['masa_audit'];
+		    $tanggaltampung .="-01";
 
-	    $kda= new kda;
-	    $kda->unit = $input['unit'];
-	    $kda->masa_audit = $tanggaltampung;
-	    $kda->bulan_audit = $input['bulan_audit'];
-	    $kda->jenis = $input['jenis_kda3'];
-	    $kda->save();
+		    $kda= new kda;
+		    $kda->unit = $input['unit'];
+		    $kda->masa_audit = $tanggaltampung;
+		    $kda->bulan_audit = $input['bulan_audit'];
+		    $kda->jenis = $input['jenis_kda3'];
+		    $kda->created_by = $input['auditor'];
+		    $kda->save();
 
-	    $ket = new kda_keterangan;
-	    $ket->kondisi = $input['kondisi'];
-	    $ket->kesimpulan = $input['kesimpulan'];
-	    $ket->saran = $input['saran'];
-	    $ket->rekomendasi = $input['rekomendasi'];
-	    $ket->tanggapan = $input['tanggapan'];
-	    $ket->kda_id = $kda->id_kda;
-	    $ket->save();
+		    $ket = new kda_keterangan;
+		    $ket->kondisi = $input['kondisi'];
+		    $ket->kesimpulan = $input['kesimpulan'];
+		    $ket->saran = $input['saran'];
+		    $ket->rekomendasi = $input['rekomendasi'];
+		    $ket->tanggapan = $input['tanggapan'];
+		    $ket->kda_id = $kda->id_kda;
+		    $ket->save();
 
-	    return response()->json(['success'=>'done']);
+		    return response()->json(['success'=>'done']);
+		}
+		return response()->json(['error'=>$validator->errors()->all()]);
         
     }
     

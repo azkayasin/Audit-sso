@@ -17,6 +17,7 @@ class kda extends Model
     'masa_audit',
     'bulan_audit',
     'jenis',
+    'kode_temuan',
     'created_by',
     ];
 

@@ -33,16 +33,18 @@ else {
               <option value="4">kda tanpa pengajuan UMK</option>
             </select>
           <input type="button" name="submitpilih" id="submitpilih" class="btn btn-info" value="buat kda" />
-        @foreach( $summernote as $summernote)
-                    {!! $summernote->content !!}
-                    @endforeach
         </div>
     </div>
+    <div id="peringatan"></div>
+    @foreach( $summernote as $summernote)
+                    {!! $summernote->content !!}
+                    @endforeach
   </div>
 </div>
 @endsection
 
 @section('addjs')
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
 <script>
   $(function () {
     //Initialize Select2 Elements
@@ -165,6 +167,7 @@ else {
   $(document).ready(function(){
     $("#submitpilih").click(function(){
       //$(".auditor").val(auditor);
+      $("#peringatan").empty();
       var listunit = `<select id="unit" class="unit2" name="unit" required=""  style="width: 15%">>
                       <option></option>
                       @foreach($unit as $data => $value)
@@ -367,8 +370,9 @@ else {
       }
     });
 
-     $('.submitkda').click(function(){    
-     $.ajax({  
+     $('.submitkda').click(function(){  
+      $("#peringatan").empty();
+      $.ajax({  
       url:postURL,  
       method:"POST",  
       data:$('#add_kda'+jenis_kda).serialize(),
@@ -380,15 +384,26 @@ else {
         }else{
           $('#kda'+jenis_kda+'').hide();
           $('#add_kda'+jenis_kda+'')[0].reset();
+          $("#peringatan").append(`<div class="alert alert-success print-success-msg" style="display:none">
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+              <h4><i class="icon fa fa-check"></i> Sukses!</h4>
+              <ul></ul>
+            </div>`)
           $(".print-success-msg").find("ul").html('');
           $(".print-success-msg").css('display','block');
           $(".print-error-msg").css('display','none');
-          $(".print-success-msg").find("ul").append('<li>Record Inserted Successfully.<button type="button" class="close" data-dismiss="alert">×</button></li>');
+          $(".print-success-msg").find("ul").append('<li>Berhasil Membuat KDA</li>');
         }
       }  
-    });  
+    });
+     
    });  
     function printErrorMsg (msg) {
+     $("#peringatan").append(`<div class="alert alert-danger print-error-msg" style="display:none">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <h4><i class="icon fa fa-ban"></i> Peringatan!</h4>
+        <ul></ul>
+      </div>`)
      $(".print-error-msg").find("ul").html('');
      $(".print-error-msg").css('display','block');
      $(".print-success-msg").css('display','none');
